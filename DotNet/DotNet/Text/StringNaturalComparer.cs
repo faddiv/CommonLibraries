@@ -9,29 +9,73 @@ namespace Faddiv.DotNet.Text
     /// which allows it to sort numbers inside the strings as numbers, not as letters.
     /// (e.g. "1", "2", "10" instead of "1", "10", "2")
     /// </summary>
-    /// <param name="stringComparer">Used string comparer</param>
-    /// <returns>Returns comparer of strings that considers natural sorting.</returns>
     public class StringNaturalComparer : StringComparer
     {
+        /// <summary>
+        /// Gets a <see cref="StringNaturalComparer"/> object that performs 
+        /// a case-sensitive string comparison using the word comparison rules of 
+        /// the current culture.
+        /// </summary>
         public new static StringNaturalComparer CurrentCulture
                     => new StringNaturalComparer(CompareOptions.None, CultureInfo.CurrentCulture);
 
+        /// <summary>
+        /// Gets a <see cref="StringNaturalComparer"/> object that performs 
+        /// a case-insensitive string comparison using the word comparison rules of 
+        /// the current culture.
+        /// </summary>
         public new static StringNaturalComparer CurrentCultureIgnoreCase
                     => new StringNaturalComparer(CompareOptions.IgnoreCase, CultureInfo.CurrentCulture);
 
 #if !NETSTANDARD1_3
+        /// <summary>
+        /// Gets a <see cref="StringNaturalComparer"/> object that performs 
+        /// a case-sensitive string natural comparison using the word comparison rules of 
+        /// the invariant culture.
+        /// </summary>
         public new static StringNaturalComparer InvariantCulture
                     => new StringNaturalComparer(CompareOptions.None, CultureInfo.InvariantCulture);
 
+        /// <summary>
+        /// Gets a <see cref="StringNaturalComparer"/> object that performs 
+        /// a case-insensitive string natural comparison using the word comparison rules of 
+        /// the invariant culture.
+        /// </summary>
         public new static StringNaturalComparer InvariantCultureIgnoreCase
                     => new StringNaturalComparer(CompareOptions.IgnoreCase, CultureInfo.InvariantCulture);
 #endif
+        /// <summary>
+        /// Gets a <see cref="StringNaturalComparer"/> object that performs 
+        /// a case-sensitive ordinal string natural comparison.
+        /// </summary>
         public new static StringNaturalComparer Ordinal
                     => new StringNaturalComparer(CompareOptions.None);
 
+        /// <summary>
+        /// Gets a <see cref="StringNaturalComparer"/> object that performs 
+        /// a case-insensitive ordinal string natural comparison.
+        /// </summary>
         public new static StringNaturalComparer OrdinalIgnoreCase
                     => new StringNaturalComparer(CompareOptions.IgnoreCase);
 
+        /// <summary>
+        ///     Creates a <see cref="StringNaturalComparer"/> object that compares 
+        ///     strings according to the rules of a specified culture.
+        /// </summary>
+        /// <param name="culture">
+        ///     A culture whose linguistic rules are used to perform a string 
+        ///     natural comparison. If null then ordinal comparison will be used.
+        /// </param>
+        /// <param name="ignoreCase">
+        ///     True to specify that comparison operations be case-insensitive; 
+        ///     False to specify that comparison operations be case-sensitive.
+        /// </param>
+        /// <returns>
+        ///     A new <see cref="StringNaturalComparer"/> object that performs 
+        ///     string natural comparisons according to the comparison rules used by 
+        ///     the culture parameter and the case rule specified by the ignoreCase 
+        ///     parameter.
+        /// </returns>
         public new static StringNaturalComparer Create(CultureInfo culture, bool ignoreCase)
         {
             return new StringNaturalComparer(
