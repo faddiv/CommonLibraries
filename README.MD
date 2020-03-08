@@ -1,0 +1,1 @@
+Targeting multiple framework: https://docs.microsoft.com/en-us/dotnet/standard/frameworks#how-to-specify-target-frameworks
