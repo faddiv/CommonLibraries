@@ -1,7 +1,9 @@
 using FluentAssertions;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Xunit;
@@ -11,7 +13,7 @@ namespace Faddiv.DotNet.Linq
     public class LeftJoinTests
     {
         [Fact]
-        public void LeftJoin_works_on_Enumerable_as_left_join()
+        public void Enumerable_LeftJoin_works_as_left_join()
         {
             var list1 = GetList(3, 1, "l1");
             var list2 = GetList(2, 1, "l2");
@@ -25,7 +27,7 @@ namespace Faddiv.DotNet.Linq
         }
 
         [Fact]
-        public void LeftJoin_requires_all_arguments()
+        public void Enumerable_LeftJoin_requires_all_arguments()
         {
             var list1 = GetList(2, 1, "l1");
             var list2 = GetList(2, 1, "l2");
@@ -68,7 +70,21 @@ namespace Faddiv.DotNet.Linq
         }
 
         [Fact]
-        public void LeftJoin_works_on_db_as_left_join()
+        public void Enumerable_LeftJoin_uses_equality_comparer()
+        {
+            var list1 = GetList(3, 1, "l1");
+            var list2 = GetList(2, 1, "l2");
+            var comparer = CreateComparer();
+
+            var result = list1
+                .LeftJoin(list2, l => l.Id, l => l.Id, (o, i) => new { o, i }, comparer.Object)
+                .ToList();
+
+            comparer.Verify(e => e.Equals(It.IsAny<int>(), It.IsAny<int>()), Times.AtLeastOnce);
+        }
+
+        [Fact]
+        public void Queriable_LeftJoin_works_on_db_as_left_join()
         {
             using var db = CreateDb();
             var list1 = GetList(3, 1, "l1");
@@ -82,6 +98,30 @@ namespace Faddiv.DotNet.Linq
 
             result.Should().HaveCount(3);
             result.Should().Contain(e => e.o != null && e.i == null);
+        }
+
+        [Fact]
+        public void Queriable_LeftJoin_uses_comparer()
+        {
+            var list1 = GetList(3, 1, "l1").AsQueryable();
+            var list2 = GetList(2, 1, "l2").AsQueryable();
+            var comparer = CreateComparer();
+
+            var result = list1
+                .LeftJoin(list2, l => l.Id, l => l.Id, (o, i) => new { o, i }, comparer.Object)
+                .ToList();
+
+            comparer.Verify(e => e.Equals(It.IsAny<int>(), It.IsAny<int>()), Times.AtLeastOnce);
+        }
+
+        private static Mock<IEqualityComparer<int>> CreateComparer()
+        {
+            var comparer = new Mock<IEqualityComparer<int>>();
+            comparer.Setup(e => e.Equals(It.IsAny<int>(), It.IsAny<int>()))
+                .Returns((int x, int y) => EqualityComparer<int>.Default.Equals(x, y));
+            comparer.Setup(e => e.GetHashCode(It.IsAny<int>()))
+                .Returns((int x) => EqualityComparer<int>.Default.GetHashCode(x));
+            return comparer;
         }
 
         [Fact]
