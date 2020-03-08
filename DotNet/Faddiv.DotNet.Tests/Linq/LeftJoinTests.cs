@@ -86,18 +86,19 @@ namespace Faddiv.DotNet.Linq
         [Fact]
         public void Queriable_LeftJoin_works_on_db_as_left_join()
         {
-            using var db = CreateDb();
-            var list1 = GetList(3, 1, "l1");
-            db.AddRange(list1);
-            db.AddRange(GetList2(2, 1, "l2", list1));
-            db.SaveChanges();
+            using(var db = CreateDb()) {
+                var list1 = GetList(3, 1, "l1");
+                db.AddRange(list1);
+                db.AddRange(GetList2(2, 1, "l2", list1));
+                db.SaveChanges();
 
-            var result = db.Datas
-                .LeftJoin(db.Data2s, l => l.Id, l => l.DataId, (o, i) => new { o, i })
-                .ToList();
+                var result = db.Datas
+                    .LeftJoin(db.Data2s, l => l.Id, l => l.DataId, (o, i) => new { o, i })
+                    .ToList();
 
-            result.Should().HaveCount(3);
-            result.Should().Contain(e => e.o != null && e.i == null);
+                result.Should().HaveCount(3);
+                result.Should().Contain(e => e.o != null && e.i == null);
+            }
         }
 
         [Fact]

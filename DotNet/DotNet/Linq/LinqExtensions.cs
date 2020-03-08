@@ -72,7 +72,7 @@ namespace Faddiv.DotNet.Linq
                 .SelectMany(e => e.o.DefaultIfEmpty(), (t, e) => resultSelector(t.i, e));
         }
 
-#if NETSTANDARD2_0 || NET40
+#if NETSTANDARD2_0 || NET45
         /// <summary>
         /// It returns all element from the outer enumerable and default (null) 
         /// from inner enumerable if no matching key found.
@@ -197,7 +197,7 @@ namespace Faddiv.DotNet.Linq
 #endif
     }
 
-#if NETSTANDARD2_0 || NET40
+#if NETSTANDARD2_0 || NET45
     class ReplaceParameterExpressionVisitor : ExpressionVisitor
     {
         public ReplaceParameterExpressionVisitor(ParameterExpression oldExpression, Expression newExpression)
