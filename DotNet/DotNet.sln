@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faddiv.DotNet.Tests", "Fadd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringNaturalComparer.BenchmarkDotNet", "StringNaturalComparer.BenchmarkDotNet\StringNaturalComparer.BenchmarkDotNet.csproj", "{AA9FC72F-17FC-4808-9BBA-B5EE56F1A0DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faddiv.Moq.Extensions", "Faddiv.Moq.Extensions\Faddiv.Moq.Extensions.csproj", "{D38C10FF-0F8D-4162-B238-270B57D7B0DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faddiv.Moq.Extensions.Tests", "Faddiv.Moq.Extensions.Tests\Faddiv.Moq.Extensions.Tests.csproj", "{EA58B1D9-AFF2-4D10-9B93-4B5D9A5BBFDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{AA9FC72F-17FC-4808-9BBA-B5EE56F1A0DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA9FC72F-17FC-4808-9BBA-B5EE56F1A0DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA9FC72F-17FC-4808-9BBA-B5EE56F1A0DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D38C10FF-0F8D-4162-B238-270B57D7B0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D38C10FF-0F8D-4162-B238-270B57D7B0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D38C10FF-0F8D-4162-B238-270B57D7B0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D38C10FF-0F8D-4162-B238-270B57D7B0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA58B1D9-AFF2-4D10-9B93-4B5D9A5BBFDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA58B1D9-AFF2-4D10-9B93-4B5D9A5BBFDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA58B1D9-AFF2-4D10-9B93-4B5D9A5BBFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA58B1D9-AFF2-4D10-9B93-4B5D9A5BBFDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
