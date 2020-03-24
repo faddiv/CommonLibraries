@@ -5,7 +5,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="GetLastInvocationArguments.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GetLastInvocationArguments.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Moq" Version="4.13.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="GetLastInvocationArguments.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GetLastInvocationArguments.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GetLastInvocationArguments.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GetLastInvocationArguments.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

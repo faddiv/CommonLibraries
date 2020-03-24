@@ -1,0 +1,40 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+using Moq;
+using System;
+
+namespace Faddiv.Moq.Extensions
+{
+<#				for(int i = 1; i < 17; i++) { 
+								var tparameter= 
+string.Join(", ", Enumerable.Range(1, i).Select(j => string.Format("TParameter{0}", j)));
+
+#>
+    partial class MockExtensions {
+	    public static void GetLastInvocationArguments<T, <#= tparameter #>, TReturn>(
+                this Mock<T> mock, 
+                Func<<#= tparameter #>, TReturn> func
+<#								for (var j=1; j <= i; j++) { #>
+                , out TParameter<#= j #> parameter<#= j #>
+<#								} #>
+                )
+                 where T : class
+        {
+            VerifyInvocation(typeof(T), func.Method
+<#								for (var j=1; j <= i; j++) { #>
+                , typeof(TParameter<#= j #>)
+<#								} #>
+                );
+            var lastInvocation = mock.LastInvocation(func.Method)
+                .Arguments;
+<#								for (var j=0; j < i; j++) { #>
+            parameter<#=j+1 #> = (TParameter<#=j+1 #>)lastInvocation[<#=j #>];
+<#								} #>
+        }
+    }
+<#				} #>
+}

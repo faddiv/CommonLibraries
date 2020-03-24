@@ -5,37 +5,9 @@ using System.Reflection;
 
 namespace Faddiv.Moq.Extensions
 {
-    public static class MockExtensions
+    public static partial class MockExtensions
     {
-        public static void GetLastInvocationArguments<T, TParameter1, TReturn>(
-            this Mock<T> mock, 
-            Func<TParameter1, TReturn> func,
-            out TParameter1 parameter1)
-             where T : class
-        {
-            VerifyInvocation(typeof(T), func.Method, 
-                typeof(TParameter1));
-            var lastInvocation = mock.LastInvocation(func.Method)
-                .Arguments;
-            parameter1 = (TParameter1)lastInvocation[0];
-        }
-
-        public static void GetLastInvocationArguments<T, TParameter1,
-            TParameter2, TReturn>(
-            this Mock<T> mock,
-            Func<TParameter1, TParameter2, TReturn> func,
-            out TParameter1 parameter1,
-            out TParameter2 parameter2)
-             where T : class
-        {
-            VerifyInvocation(typeof(T), func.Method, 
-                typeof(TParameter1), typeof(TParameter2));
-            var lastInvocation = mock.LastInvocation(func.Method)
-                .Arguments;
-            parameter1 = (TParameter1)lastInvocation[0];
-            parameter2 = (TParameter2)lastInvocation[1];
-        }
-
+        
         private static IInvocation LastInvocation(
             this Mock mock, 
             MethodInfo methodInfo)
