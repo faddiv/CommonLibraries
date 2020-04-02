@@ -111,10 +111,92 @@ namespace Faddiv.DotNet.Collections
             ICollection<int> list = Enumerable.Range(0, 3).ToList();
 
             // Act
-            var result = list.AddElements(1,2);
+            var result = list.AddElements(1, 2);
 
             // Assert
             result.Should().BeSameAs(list);
+        }
+
+        [Fact]
+        public void FindAndRemove_finds_the_element_by_match_function()
+        {
+            // Arrange
+            var elements = new List<int> { 1, 2, 3 };
+
+            // Act
+            var result = elements.FindAndRemove(e => e == 2);
+
+            // Assert
+            result.Should().Be(2);
+        }
+
+        [Fact]
+        public void FindAndRemove_returns_default_if_not_found()
+        {
+            // Arrange
+            var elements = new List<int> { 1, 2, 3 };
+
+            // Act
+            var result = elements.FindAndRemove(e => e == 4);
+
+            // Assert
+            result.Should().Be(0);
+        }
+
+        [Fact]
+        public void FindAndRemove_removes_the_element_from_the_list()
+        {
+            // Arrange
+            var elements = new List<int> { 1, 2, 3 };
+
+            // Act
+            elements.FindAndRemove(e => e == 2);
+
+            // Assert
+            elements.Should().NotContain(2);
+        }
+
+        [Fact]
+        public void FindAndRemove_removes_the_element_from_the_collection()
+        {
+            // Arrange
+            var elements = new Dictionary<int, string> {
+                { 1, "a"},
+                { 2, "b"},
+                { 3, "c"}
+            };
+
+            // Act
+            elements.FindAndRemove(e => e.Key == 2);
+
+            // Assert
+            elements.Should().NotContainKey(2);
+        }
+
+        [Fact]
+        public void FindAndRemove_requires_the_collection()
+        {
+            // Arrange
+            ICollection<int> elements = null;
+
+            // Act
+            Func<int> func = () => elements.FindAndRemove(e => e == 2);
+
+            // Assert
+            func.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void FindAndRemove_requires_the_match()
+        {
+            // Arrange
+            var elements = new List<int> { 1 };
+
+            // Act
+            Func<int> func = () => elements.FindAndRemove(null);
+
+            // Assert
+            func.Should().Throw<ArgumentNullException>();
         }
     }
 }
