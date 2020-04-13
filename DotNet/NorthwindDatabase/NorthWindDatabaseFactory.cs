@@ -18,7 +18,7 @@ namespace NorthwindDatabase
                   snapshot ? $"Data Source={sqliteLocation.Value};" : "Data Source=:memory:;"
                   )
         {
-            _scaffold = scaffold ?? new DatabaseScaffold(Environment.CurrentDirectory);
+            _scaffold = scaffold ?? new DatabaseScaffold();
         }
 
         private static string SqliteLocation()

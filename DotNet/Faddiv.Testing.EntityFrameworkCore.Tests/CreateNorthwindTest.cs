@@ -12,7 +12,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests
         [Fact]
         public void DatabaseCreated()
         {
-            var scaffold = new DatabaseScaffold(Path.Combine(Environment.CurrentDirectory, "Data"));
+            var scaffold = new DatabaseScaffold();
             using var connection = new SqliteConnection("Data Source=:memory:;");
             connection.Open();
             using (var context = TestDbContextProvider.CreateDbContext(connection))

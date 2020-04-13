@@ -8,12 +8,9 @@ namespace NorthwindDatabase
 {
     public class DatabaseScaffold
     {
-        public DatabaseScaffold(string directory)
+        public DatabaseScaffold()
         {
-            Directory = directory;
         }
-
-        public string Directory { get; }
 
         public void Run(TestDbContext context)
         {

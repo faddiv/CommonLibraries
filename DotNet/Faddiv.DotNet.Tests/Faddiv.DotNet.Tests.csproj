@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotNet\Faddiv.DotNet.csproj" />
+    <ProjectReference Include="..\NorthwindDatabase\NorthwindDatabase.csproj" />
   </ItemGroup>
 
   <ItemGroup>

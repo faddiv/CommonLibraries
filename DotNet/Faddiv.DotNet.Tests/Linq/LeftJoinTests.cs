@@ -1,7 +1,8 @@
+using Faddiv.Testing.EntityFrameworkCore.Tests;
 using FluentAssertions;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using NorthwindDatabase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,59 +13,62 @@ namespace Faddiv.DotNet.Linq
 {
     public class LeftJoinTests
     {
+        static NorthWindDatabaseFactory factory = new NorthWindDatabaseFactory(new DatabaseScaffold());
+
         [Fact]
         public void Enumerable_LeftJoin_works_as_left_join()
         {
-            var list1 = GetList(3, 1, "l1");
-            var list2 = GetList(2, 1, "l2");
+            var list1 = GetList();
+            var list2 = list1.SelectMany(e => e.OrderDetails).ToList();
+            list2.RemoveRange(list2.Count / 2, list2.Count / 2);
 
             var result = list1
-                .LeftJoin(list2, l => l.Id, l => l.Id, (o, i) => new { o, i })
+                .LeftJoin(list2, l => l.OrderId, l => l.OrderId, (o, i) => new { o, i })
                 .ToList();
 
-            result.Should().HaveCount(3);
+            result.Should().Contain(e => e.o != null && e.i != null && e.o.OrderId == e.i.OrderId);
             result.Should().Contain(e => e.o != null && e.i == null);
         }
 
         [Fact]
         public void Enumerable_LeftJoin_requires_all_arguments()
         {
-            var list1 = GetList(2, 1, "l1");
-            var list2 = GetList(2, 1, "l2");
+            var list1 = GetList();
+            var list2 = list1.SelectMany(e => e.OrderDetails).ToList();
 
             Assert.Throws<ArgumentNullException>("outer", () =>
             {
-                Data[] outer = null;
+                Orders[] outer = null;
                 return outer
-                    .LeftJoin(list2, l => l.Id, l => l.Id, (o, i) => new { o, i })
+                    .LeftJoin(list2, l => l.OrderId, l => l.OrderId, (o, i) => new { o, i })
                     .ToList();
             });
 
             Assert.Throws<ArgumentNullException>("inner", () =>
             {
                 return list1
-                    .LeftJoin((Data[])null, l => l.Id, l => l.Id, (o, i) => new { o, i })
+                    .LeftJoin((OrderDetails[])null, l => l.OrderId, l => l.OrderId, (o, i) => new { o, i })
                     .ToList();
             });
 
             Assert.Throws<ArgumentNullException>("outerKeySelector", () =>
             {
                 return list1
-                    .LeftJoin(list2, null, l => l.Id, (o, i) => new { o, i })
+                    .LeftJoin(list2, null, l => l.OrderId, (o, i) => new { o, i })
                     .ToList();
             });
 
             Assert.Throws<ArgumentNullException>("innerKeySelector", () =>
             {
                 return list1
-                    .LeftJoin(list2, l => l.Id, null, (o, i) => new { o, i })
+                    .LeftJoin(list2, l => l.OrderId, null, (o, i) => new { o, i })
                     .ToList();
             });
             Assert.Throws<ArgumentNullException>("resultSelector", () =>
             {
-                Func<Data, Data, object> resultSelector = null;
+                Func<Orders, OrderDetails, object> resultSelector = null;
                 return list1
-                    .LeftJoin(list2, l => l.Id, l => l.Id, resultSelector)
+                    .LeftJoin(list2, l => l.OrderId, l => l.OrderId, resultSelector)
                     .ToList();
             });
         }
@@ -72,12 +76,12 @@ namespace Faddiv.DotNet.Linq
         [Fact]
         public void Enumerable_LeftJoin_uses_equality_comparer()
         {
-            var list1 = GetList(3, 1, "l1");
-            var list2 = GetList(2, 1, "l2");
+            var list1 = GetList();
+            var list2 = list1.SelectMany(e => e.OrderDetails).ToList();
             var comparer = CreateComparer();
 
             var result = list1
-                .LeftJoin(list2, l => l.Id, l => l.Id, (o, i) => new { o, i }, comparer.Object)
+                .LeftJoin(list2, l => l.OrderId, l => l.OrderId, (o, i) => new { o, i }, comparer.Object)
                 .ToList();
 
             comparer.Verify(e => e.Equals(It.IsAny<int>(), It.IsAny<int>()), Times.AtLeastOnce);
@@ -87,16 +91,16 @@ namespace Faddiv.DotNet.Linq
         public void Queriable_LeftJoin_works_on_db_as_left_join()
         {
             using(var db = CreateDb()) {
-                var list1 = GetList(3, 1, "l1");
-                db.AddRange(list1);
-                db.AddRange(GetList2(2, 1, "l2", list1));
+
+                var orderDetails = db.Orders.Take(10).SelectMany(e => e.OrderDetails).ToList();
+                db.RemoveRange(orderDetails);
                 db.SaveChanges();
 
-                var result = db.Datas
-                    .LeftJoin(db.Data2s, l => l.Id, l => l.DataId, (o, i) => new { o, i })
+                var result = db.Orders
+                    .LeftJoin(db.OrderDetails, l => l.OrderId, l => l.OrderId, (o, i) => new { o, i })
                     .ToList();
 
-                result.Should().HaveCount(3);
+                result.Should().Contain(e => e.o != null && e.i != null && e.o.OrderId == e.i.OrderId);
                 result.Should().Contain(e => e.o != null && e.i == null);
             }
         }
@@ -104,12 +108,12 @@ namespace Faddiv.DotNet.Linq
         [Fact]
         public void Queriable_LeftJoin_uses_comparer()
         {
-            var list1 = GetList(3, 1, "l1").AsQueryable();
-            var list2 = GetList(2, 1, "l2").AsQueryable();
+            var list1 = GetList();
+            var list2 = list1.SelectMany(e => e.OrderDetails).ToList();
             var comparer = CreateComparer();
 
             var result = list1
-                .LeftJoin(list2, l => l.Id, l => l.Id, (o, i) => new { o, i }, comparer.Object)
+                .LeftJoin(list2, l => l.OrderId, l => l.OrderId, (o, i) => new { o, i }, comparer.Object)
                 .ToList();
 
             comparer.Verify(e => e.Equals(It.IsAny<int>(), It.IsAny<int>()), Times.AtLeastOnce);
@@ -129,72 +133,65 @@ namespace Faddiv.DotNet.Linq
         public void Queriable_LeftJoin_requires_all_arguments()
         {
             using var db = CreateDb();
-            var list1 = db.Datas;
-            var list2 = db.Data2s;
+            var list1 = db.Orders;
+            var list2 = db.OrderDetails;
             Assert.Throws<ArgumentNullException>("outer", () =>
             {
-                DbSet<Data> outer = null;
+                DbSet<Orders> outer = null;
                 return outer
-                    .LeftJoin(list2, l => l.Id, l => l.Id, (o, i) => new { o, i })
+                    .LeftJoin(list2, l => l.OrderId, l => l.OrderId, (o, i) => new { o, i })
                     .ToList();
             });
 
             Assert.Throws<ArgumentNullException>("inner", () =>
             {
                 return list1
-                    .LeftJoin((Data[])null, l => l.Id, l => l.Id, (o, i) => new { o, i })
+                    .LeftJoin((OrderDetails[])null, l => l.OrderId, l => l.OrderId, (o, i) => new { o, i })
                     .ToList();
             });
 
             Assert.Throws<ArgumentNullException>("outerKeySelector", () =>
             {
                 return list1
-                    .LeftJoin(list2, null, l => l.Id, (o, i) => new { o, i })
+                    .LeftJoin(list2, null, l => l.OrderId, (o, i) => new { o, i })
                     .ToList();
             });
 
             Assert.Throws<ArgumentNullException>("innerKeySelector", () =>
             {
                 return list1
-                    .LeftJoin(list2, l => l.Id, null, (o, i) => new { o, i })
+                    .LeftJoin(list2, l => l.OrderId, null, (o, i) => new { o, i })
                     .ToList();
             });
             Assert.Throws<ArgumentNullException>("resultSelector", () =>
             {
-                Expression<Func<Data, Data2, object>> resultSelector = null;
+                Expression<Func<Orders, OrderDetails, object>> resultSelector = null;
                 return list1
-                    .LeftJoin(list2, l => l.Id, l => l.Id, resultSelector)
+                    .LeftJoin(list2, l => l.OrderId, l => l.OrderId, resultSelector)
                     .ToList();
             });
         }
 
 
-        private TestDbContext CreateDb()
+        private static TestDbContext CreateDb()
         {
-            var sql = new SqliteConnection("Data Source=:memory:");
-            sql.Open();
-            var db = TestDbContextProvider.CreateDbContext(sql);
-            db.Database.Migrate();
-            return db;
+            return factory.CreateDbContext() as TestDbContext;
         }
 
-        private static Data[] GetList(int size, int seed, string name)
+        private static List<Orders> GetList()
         {
-            return Enumerable.Range(seed, size)
-                .Select(i => new Data(i,
-                    $"{name} element{i}"))
-                .ToArray();
+            var db = CreateDb();
+            return db.Orders
+                .Include(e => e.OrderDetails)
+                .ToList();
         }
 
-        private static Data2[] GetList2(int size, int seed, string name, Data[] joined)
+        private static List<OrderDetails> GetList2()
         {
-            return Enumerable.Range(seed, size)
-                .Select(i => new Data2(i,
-                    $"{name} element{i}")
-                {
-                    Data = joined[i - seed]
-                })
-                .ToArray();
+            var db = CreateDb();
+            return db.OrderDetails
+                .Include(e => e.Order)
+                .ToList();
         }
     }
 }

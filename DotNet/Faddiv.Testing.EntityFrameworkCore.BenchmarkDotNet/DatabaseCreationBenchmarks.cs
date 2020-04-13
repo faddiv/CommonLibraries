@@ -15,7 +15,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.BenchmarkDotNet
         [GlobalSetup]
         public void Setup()
         {
-            scaffold = new DatabaseScaffold(Path.Combine(Environment.CurrentDirectory, "Data"));
+            scaffold = new DatabaseScaffold();
             factory = new NorthWindDatabaseFactory(scaffold);
             factory.CreateDbContext();
         }
