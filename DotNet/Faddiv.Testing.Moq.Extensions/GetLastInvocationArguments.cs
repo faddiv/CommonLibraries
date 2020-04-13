@@ -1,7 +1,7 @@
 ﻿using Moq;
 using System;
 
-namespace Faddiv.Moq.Extensions
+namespace Faddiv.Testing.Moq.Extensions
 {
     partial class MockExtensions {
 	    public static void GetLastInvocationArguments<T, TParameter1, TReturn>(
@@ -18,8 +18,7 @@ namespace Faddiv.Moq.Extensions
                 .Arguments;
             parameter1 = (TParameter1)lastInvocation[0];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TReturn> func
@@ -37,8 +36,7 @@ namespace Faddiv.Moq.Extensions
             parameter1 = (TParameter1)lastInvocation[0];
             parameter2 = (TParameter2)lastInvocation[1];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TReturn> func
@@ -59,8 +57,7 @@ namespace Faddiv.Moq.Extensions
             parameter2 = (TParameter2)lastInvocation[1];
             parameter3 = (TParameter3)lastInvocation[2];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TReturn> func
@@ -84,8 +81,7 @@ namespace Faddiv.Moq.Extensions
             parameter3 = (TParameter3)lastInvocation[2];
             parameter4 = (TParameter4)lastInvocation[3];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TReturn> func
@@ -112,8 +108,7 @@ namespace Faddiv.Moq.Extensions
             parameter4 = (TParameter4)lastInvocation[3];
             parameter5 = (TParameter5)lastInvocation[4];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TReturn> func
@@ -143,8 +138,7 @@ namespace Faddiv.Moq.Extensions
             parameter5 = (TParameter5)lastInvocation[4];
             parameter6 = (TParameter6)lastInvocation[5];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TReturn> func
@@ -177,8 +171,7 @@ namespace Faddiv.Moq.Extensions
             parameter6 = (TParameter6)lastInvocation[5];
             parameter7 = (TParameter7)lastInvocation[6];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TReturn> func
@@ -214,8 +207,7 @@ namespace Faddiv.Moq.Extensions
             parameter7 = (TParameter7)lastInvocation[6];
             parameter8 = (TParameter8)lastInvocation[7];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TReturn> func
@@ -254,8 +246,7 @@ namespace Faddiv.Moq.Extensions
             parameter8 = (TParameter8)lastInvocation[7];
             parameter9 = (TParameter9)lastInvocation[8];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TReturn> func
@@ -297,8 +288,7 @@ namespace Faddiv.Moq.Extensions
             parameter9 = (TParameter9)lastInvocation[8];
             parameter10 = (TParameter10)lastInvocation[9];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TReturn> func
@@ -343,8 +333,7 @@ namespace Faddiv.Moq.Extensions
             parameter10 = (TParameter10)lastInvocation[9];
             parameter11 = (TParameter11)lastInvocation[10];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TReturn> func
@@ -392,8 +381,7 @@ namespace Faddiv.Moq.Extensions
             parameter11 = (TParameter11)lastInvocation[10];
             parameter12 = (TParameter12)lastInvocation[11];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TParameter13, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TParameter13, TReturn> func
@@ -444,8 +432,7 @@ namespace Faddiv.Moq.Extensions
             parameter12 = (TParameter12)lastInvocation[11];
             parameter13 = (TParameter13)lastInvocation[12];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TParameter13, TParameter14, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TParameter13, TParameter14, TReturn> func
@@ -499,8 +486,7 @@ namespace Faddiv.Moq.Extensions
             parameter13 = (TParameter13)lastInvocation[12];
             parameter14 = (TParameter14)lastInvocation[13];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TParameter13, TParameter14, TParameter15, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TParameter13, TParameter14, TParameter15, TReturn> func
@@ -557,8 +543,7 @@ namespace Faddiv.Moq.Extensions
             parameter14 = (TParameter14)lastInvocation[13];
             parameter15 = (TParameter15)lastInvocation[14];
         }
-    }
-    partial class MockExtensions {
+
 	    public static void GetLastInvocationArguments<T, TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TParameter13, TParameter14, TParameter15, TParameter16, TReturn>(
                 this Mock<T> mock, 
                 Func<TParameter1, TParameter2, TParameter3, TParameter4, TParameter5, TParameter6, TParameter7, TParameter8, TParameter9, TParameter10, TParameter11, TParameter12, TParameter13, TParameter14, TParameter15, TParameter16, TReturn> func
@@ -618,5 +603,6 @@ namespace Faddiv.Moq.Extensions
             parameter15 = (TParameter15)lastInvocation[14];
             parameter16 = (TParameter16)lastInvocation[15];
         }
+
     }
 }

@@ -1,9 +1,8 @@
 using FluentAssertions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Faddiv.Moq.Extensions.Tests
+namespace Faddiv.Testing.Moq.Extensions.Tests
 {
     public class MockExtensionsTests
     {

@@ -78,7 +78,7 @@ namespace Faddiv.DotNet.Collections
         ///     The element that matches the condition or default if not found.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        ///     Collection or match is null.
+        ///     The collection or the match is null.
         /// </exception>
         public static TElement FindAndRemove<TElement>(this ICollection<TElement> collection, Predicate<TElement> match)
         {
