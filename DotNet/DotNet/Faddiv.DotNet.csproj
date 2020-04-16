@@ -20,5 +20,21 @@
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
   </PropertyGroup>
-  
+
+  <ItemGroup>
+    <Compile Update="Cleanup\AddEventSubscription.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddEventSubscription.tt</DependentUpon>
+    </Compile>
+    <None Update="Cleanup\AddEventSubscription.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AddEventSubscription.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
 </Project>
