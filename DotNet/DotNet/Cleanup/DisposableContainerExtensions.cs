@@ -27,5 +27,20 @@ namespace Faddiv.DotNet.Cleanup
         {
             container.AddManagedResource(new EventSubscription(instance, eventName, handler));
         }
+
+        /// <summary>
+        /// Subscribe the handler for the given event and adds the unsubscription 
+        /// to the DisposableContanier so it is called on Dispose.
+        /// </summary>
+        /// <typeparam name="TSource">The type whoich contains the static event.</typeparam>
+        /// <param name="container">The container where the event unsubscription is added.</param>
+        /// <param name="eventName">The name of the event. It is case sensitive.</param>
+        /// <param name="handler">The handler which are subscripted to the event.</param>
+        public static void AddEventSubscription<TSource>(this DisposableContainer container,
+            string eventName,
+            Delegate handler)
+        {
+            container.AddManagedResource(new EventSubscription(typeof(TSource), eventName, handler));
+        }
     }
 }
