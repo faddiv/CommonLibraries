@@ -32,7 +32,7 @@ namespace Faddiv.DotNet.Cleanup
         /// Subscribe the handler for the given event and adds the unsubscription 
         /// to the DisposableContanier so it is called on Dispose.
         /// </summary>
-        /// <typeparam name="TSource">The type whoich contains the static event.</typeparam>
+        /// <typeparam name="TSource">The type which contains the static event.</typeparam>
         /// <param name="container">The container where the event unsubscription is added.</param>
         /// <param name="eventName">The name of the event. It is case sensitive.</param>
         /// <param name="handler">The handler which are subscripted to the event.</param>
@@ -40,7 +40,23 @@ namespace Faddiv.DotNet.Cleanup
             string eventName,
             Delegate handler)
         {
-            container.AddManagedResource(new EventSubscription(typeof(TSource), eventName, handler));
+            container.AddEventSubscription(typeof(TSource), eventName, handler);
+        }
+
+
+        /// <summary>
+        /// Subscribe the handler for the given event and adds the unsubscription 
+        /// to the DisposableContanier so it is called on Dispose.
+        /// </summary>
+        /// <param name="eventSourceType">The type which contains the static event.</param>
+        /// <param name="container">The container where the event unsubscription is added.</param>
+        /// <param name="eventName">The name of the event. It is case sensitive.</param>
+        /// <param name="handler">The handler which are subscripted to the event.</param>
+        public static void AddEventSubscription(this DisposableContainer container, Type eventSourceType,
+            string eventName,
+            Delegate handler)
+        {
+            container.AddManagedResource(new EventSubscription(eventSourceType, eventName, handler));
         }
     }
 }

@@ -58,6 +58,25 @@ namespace Faddiv.DotNet.Cleanup
         }
 
         [Fact]
+        public void AddEventSubscription_adds_static_handler_delegate_to_the_DisposableContainer2()
+        {
+
+            var container = new DisposableContainer();
+            var instanceMock = new Mock<IDummyObserver>();
+            var args = new EventArgs();
+
+            container.AddEventSubscription(
+                typeof(DummyEventSource),
+                nameof(DummyEventSource.StaticHandler1),
+                new EventHandler(instanceMock.Object.EventHandler));
+            DummyEventSource.InvokeStaticHandler1(args);
+            container.Dispose();
+            DummyEventSource.InvokeStaticHandler1(args);
+
+            instanceMock.Verify(d => d.EventHandler(It.IsAny<object>(), It.IsAny<EventArgs>()), Times.Once);
+        }
+
+        [Fact]
         public void AddEventSubscription_adds_instance_event_handler_to_the_DisposableContainer()
         {
 
