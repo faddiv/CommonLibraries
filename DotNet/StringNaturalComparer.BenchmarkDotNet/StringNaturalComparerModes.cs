@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace StringNaturalComparerNS
 {
+    [ArtifactsPath(".\\StringNaturalComparerModes")]
     public class StringNaturalComparerModes : BenchmarksBase
     {
         private readonly IComparer<string> currentCulture = Faddiv.DotNet.Text.StringNaturalComparer.CurrentCulture;

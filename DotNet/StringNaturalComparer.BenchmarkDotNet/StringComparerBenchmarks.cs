@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace StringNaturalComparerNS
 {
+    [ArtifactsPath(".\\StringComparerBenchmarks")]
     public class StringComparerBenchmarks : BenchmarksBase
     {
         private readonly IComparer<string> stringNaturalComparer = Faddiv.DotNet.Text.StringNaturalComparer.InvariantCultureIgnoreCase;

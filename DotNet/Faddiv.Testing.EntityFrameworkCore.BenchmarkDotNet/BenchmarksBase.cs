@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Mathematics;
 using BenchmarkDotNet.Order;
+using Perfolizer.Mathematics.OutlierDetection;
 
 namespace Faddiv.Testing.EntityFrameworkCore.BenchmarkDotNet
 {

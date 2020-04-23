@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace StringNaturalComparerNS
 {
+    [ArtifactsPath(".\\CompareToBuildinComparerBenchmarks")]
     public class CompareToBuildinComparerBenchmarks : BenchmarksBase
     {
         private readonly IComparer<string> stringNaturalComparerOrdinal = 

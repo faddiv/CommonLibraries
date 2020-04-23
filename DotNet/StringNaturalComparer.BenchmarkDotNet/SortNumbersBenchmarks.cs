@@ -7,6 +7,7 @@ using System.Text;
 
 namespace StringNaturalComparerNS
 {
+    [ArtifactsPath(".\\SortNumbersBenchmarks")]
     public class SortNumbersBenchmarks : BenchmarksBase
     {
         private readonly IComparer<string> stringNaturalComparer = Faddiv.DotNet.Text.StringNaturalComparer.InvariantCultureIgnoreCase;

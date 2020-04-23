@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace StringNaturalComparerNS
 {
+    [ArtifactsPath(".\\BigNumberBenchmarks")]
     public class BigNumberBenchmarks : BenchmarksBase
     {
         private readonly IComparer<string> stringNaturalComparer = Faddiv.DotNet.Text.StringNaturalComparer.Ordinal;

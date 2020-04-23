@@ -1,4 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
+using System.Diagnostics;
+using System.IO;
 
 namespace StringNaturalComparerNS
 {
@@ -6,7 +8,16 @@ namespace StringNaturalComparerNS
     {
         public static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<StringComparerBenchmarks>();
+            var benchmark  = typeof(StringComparerBenchmarks);
+            BenchmarkRunner.Run(benchmark);
+            var processStartInfo = new ProcessStartInfo(
+                "c:\\Program Files\\R\\R-3.6.2\\bin\\Rscript.exe",
+                "BuildPlots.R")
+            {
+                WorkingDirectory = Path.GetFullPath($".\\{benchmark.Name}\\results")
+            };
+            var process = Process.Start(processStartInfo);
+            process.WaitForExit();
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace StringNaturalComparerNS
 {
+    [ArtifactsPath(".\\EtcBenchmarks")]
     public class EtcBenchmarks : BenchmarksBase
     {
         public enum TestCase
