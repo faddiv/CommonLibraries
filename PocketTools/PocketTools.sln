@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faddiv.DotNet", "DotNet\Faddiv.DotNet.csproj", "{B71C0262-EF13-4EDD-841A-3DEE19F6E7FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketTools.Core", "PocketTools.Core\PocketTools.Core.csproj", "{B71C0262-EF13-4EDD-841A-3DEE19F6E7FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faddiv.DotNet.Tests", "Faddiv.DotNet.Tests\Faddiv.DotNet.Tests.csproj", "{984961CA-71AD-4FE5-84FF-326BF389FCBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketTools.Core.Tests", "PocketTools.Core.Tests\PocketTools.Core.Tests.csproj", "{984961CA-71AD-4FE5-84FF-326BF389FCBE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringNaturalComparer.BenchmarkDotNet", "StringNaturalComparer.BenchmarkDotNet\StringNaturalComparer.BenchmarkDotNet.csproj", "{AA9FC72F-17FC-4808-9BBA-B5EE56F1A0DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faddiv.Testing.Moq.Extensions", "Faddiv.Testing.Moq.Extensions\Faddiv.Testing.Moq.Extensions.csproj", "{D38C10FF-0F8D-4162-B238-270B57D7B0DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketTools.Testing.Moq.Extensions", "PocketTools.Testing.Moq.Extensions\PocketTools.Testing.Moq.Extensions.csproj", "{D38C10FF-0F8D-4162-B238-270B57D7B0DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faddiv.Testing.Moq.Extensions.Tests", "Faddiv.Testing.Moq.Extensions.Tests\Faddiv.Testing.Moq.Extensions.Tests.csproj", "{EA58B1D9-AFF2-4D10-9B93-4B5D9A5BBFDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketTools.Testing.Moq.Extensions.Tests", "PocketTools.Testing.Moq.Extensions.Tests\PocketTools.Testing.Moq.Extensions.Tests.csproj", "{EA58B1D9-AFF2-4D10-9B93-4B5D9A5BBFDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faddiv.Testing.EntityFrameworkCore", "Faddiv.Testing.EntityFrameworkCore\Faddiv.Testing.EntityFrameworkCore.csproj", "{4059D384-FACB-4ED2-9F72-8D2A0E36E224}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketTools.Testing.EntityFrameworkCore", "PocketTools.Testing.EntityFrameworkCore\PocketTools.Testing.EntityFrameworkCore.csproj", "{4059D384-FACB-4ED2-9F72-8D2A0E36E224}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNet", "DotNet", "{172ADB43-7B50-43EA-8D10-B88D4A0F8F6D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PocketTools.Core", "PocketTools.Core", "{172ADB43-7B50-43EA-8D10-B88D4A0F8F6D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing.EntityFrameworkCore", "Testing.EntityFrameworkCore", "{7DE25160-5A8B-4E74-9A63-DCE6AD147996}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing.Moq.Extensions", "Testing.Moq.Extensions", "{1C9A6D6F-395A-4B00-BE73-1DE91C636BC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faddiv.Testing.EntityFrameworkCore.Tests", "Faddiv.Testing.EntityFrameworkCore.Tests\Faddiv.Testing.EntityFrameworkCore.Tests.csproj", "{85E7688A-380E-4353-9555-FF8B4640B9DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketTools.Testing.EntityFrameworkCore.Tests", "PocketTools.Testing.EntityFrameworkCore.Tests\PocketTools.Testing.EntityFrameworkCore.Tests.csproj", "{85E7688A-380E-4353-9555-FF8B4640B9DC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthwindDatabase", "NorthwindDatabase\NorthwindDatabase.csproj", "{30F3837C-0613-4FDB-861F-530A4617D5FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faddiv.Testing.EntityFrameworkCore.BenchmarkDotNet", "Faddiv.Testing.EntityFrameworkCore.BenchmarkDotNet\Faddiv.Testing.EntityFrameworkCore.BenchmarkDotNet.csproj", "{6ABFABC5-41DC-47CE-A84C-9BD6CE4C338A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketTools.Testing.EntityFrameworkCore.BenchmarkDotNet", "PocketTools.Testing.EntityFrameworkCore.BenchmarkDotNet\PocketTools.Testing.EntityFrameworkCore.BenchmarkDotNet.csproj", "{6ABFABC5-41DC-47CE-A84C-9BD6CE4C338A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

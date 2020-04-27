@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Faddiv.Testing.EntityFrameworkCore\Faddiv.Testing.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\PocketTools.Testing.EntityFrameworkCore\PocketTools.Testing.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
