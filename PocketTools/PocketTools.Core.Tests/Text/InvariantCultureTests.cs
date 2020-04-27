@@ -1,8 +1,8 @@
-﻿using Faddiv.DotNet.Text.TestHelpers;
+﻿using PocketTools.Core.Text.TestHelpers;
 using System;
 using Xunit;
 
-namespace Faddiv.DotNet.Text
+namespace PocketTools.Core.Text
 {
     public class InvariantCultureTests : StringNaturalComparerCommonTests
     {

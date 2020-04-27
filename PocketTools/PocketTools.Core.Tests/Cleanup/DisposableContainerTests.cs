@@ -3,7 +3,7 @@ using Moq;
 using System;
 using Xunit;
 
-namespace Faddiv.DotNet.Cleanup
+namespace PocketTools.Core.Cleanup
 {
     public class DisposableContainerTests
     {

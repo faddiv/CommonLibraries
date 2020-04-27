@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Runtime.CompilerServices;
 
-namespace Faddiv.DotNet.Text
+namespace PocketTools.Core.Text
 {
     /// <summary>
     /// Enhances string comparer with natural sorting functionality,

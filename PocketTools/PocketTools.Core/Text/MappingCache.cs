@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace Faddiv.DotNet.Text
+namespace PocketTools.Core.Text
 {
     internal class MappingCache
     {

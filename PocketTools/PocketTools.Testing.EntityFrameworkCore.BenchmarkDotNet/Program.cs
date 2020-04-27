@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace Faddiv.Testing.EntityFrameworkCore.BenchmarkDotNet
+namespace PocketTools.Testing.EntityFrameworkCore.BenchmarkDotNet
 {
     public static class Program
     {

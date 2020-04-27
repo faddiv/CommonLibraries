@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Faddiv.DotNet.Text
+namespace PocketTools.Core.Text
 {
     internal class ArrayComparer
     {

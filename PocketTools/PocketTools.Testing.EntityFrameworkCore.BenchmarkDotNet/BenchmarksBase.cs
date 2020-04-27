@@ -3,7 +3,7 @@ using BenchmarkDotNet.Mathematics;
 using BenchmarkDotNet.Order;
 using Perfolizer.Mathematics.OutlierDetection;
 
-namespace Faddiv.Testing.EntityFrameworkCore.BenchmarkDotNet
+namespace PocketTools.Testing.EntityFrameworkCore.BenchmarkDotNet
 {
     [HtmlExporter, RPlotExporter]
     [Orderer(SummaryOrderPolicy.Default)]

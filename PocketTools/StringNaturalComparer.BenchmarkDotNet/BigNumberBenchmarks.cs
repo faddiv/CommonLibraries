@@ -6,7 +6,7 @@ namespace StringNaturalComparerNS
     [ArtifactsPath(".\\BigNumberBenchmarks")]
     public class BigNumberBenchmarks : BenchmarksBase
     {
-        private readonly IComparer<string> stringNaturalComparer = Faddiv.DotNet.Text.StringNaturalComparer.Ordinal;
+        private readonly IComparer<string> stringNaturalComparer = PocketTools.Core.Text.StringNaturalComparer.Ordinal;
         private readonly IComparer<string> naturalSortExtension = NaturalSort.Extension.StringComparerNaturalSortExtension.WithNaturalSort(System.StringComparer.CurrentCulture);
         private readonly IComparer<string> pInvokeComparer = new PInvokeComparer();
 

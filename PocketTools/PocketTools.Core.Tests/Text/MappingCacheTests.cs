@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xunit;
 
-namespace Faddiv.DotNet.Text
+namespace PocketTools.Core.Text
 {
     public class MappingCacheTests
     {

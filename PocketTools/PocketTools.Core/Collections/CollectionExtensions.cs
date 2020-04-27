@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Faddiv.DotNet.Collections
+namespace PocketTools.Core.Collections
 {
     public static class CollectionExtensions
     {

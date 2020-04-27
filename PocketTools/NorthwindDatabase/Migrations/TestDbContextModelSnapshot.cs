@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using NorthwindDatabase;
 using System;
 
-namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
+namespace PocketTools.Testing.EntityFrameworkCore.Tests.Migrations
 {
     [DbContext(typeof(TestDbContext))]
     partial class TestDbContextModelSnapshot : ModelSnapshot
@@ -18,7 +18,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452");
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Categories", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Categories", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.CustomerCustomerDemo", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.CustomerCustomerDemo", b =>
                 {
                     b.Property<string>("CustomerId")
                         .HasColumnName("CustomerID")
@@ -59,7 +59,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("CustomerCustomerDemo");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.CustomerDemographics", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.CustomerDemographics", b =>
                 {
                     b.Property<string>("CustomerTypeId")
                         .HasColumnName("CustomerTypeID")
@@ -73,7 +73,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("CustomerDemographics");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Customers", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Customers", b =>
                 {
                     b.Property<string>("CustomerId")
                         .HasColumnName("CustomerID")
@@ -127,7 +127,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Employees", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Employees", b =>
                 {
                     b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
@@ -198,7 +198,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.EmployeeTerritories", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.EmployeeTerritories", b =>
                 {
                     b.Property<int>("EmployeeId")
                         .HasColumnName("EmployeeID");
@@ -214,7 +214,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("EmployeeTerritories");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.OrderDetails", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.OrderDetails", b =>
                 {
                     b.Property<int>("OrderId")
                         .HasColumnName("OrderID");
@@ -246,7 +246,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Order Details");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Orders", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Orders", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
@@ -316,7 +316,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Products", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Products", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -370,7 +370,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Region", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Region", b =>
                 {
                     b.Property<int>("RegionId")
                         .HasColumnName("RegionID");
@@ -384,7 +384,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Region");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Shippers", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Shippers", b =>
                 {
                     b.Property<int>("ShipperId")
                         .ValueGeneratedOnAdd()
@@ -402,7 +402,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Shippers");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Suppliers", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Suppliers", b =>
                 {
                     b.Property<int>("SupplierId")
                         .ValueGeneratedOnAdd()
@@ -453,7 +453,7 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Suppliers");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Territories", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Territories", b =>
                 {
                     b.Property<string>("TerritoryId")
                         .HasColumnName("TerritoryID")
@@ -473,87 +473,87 @@ namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
                     b.ToTable("Territories");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.CustomerCustomerDemo", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.CustomerCustomerDemo", b =>
                 {
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Customers", "Customer")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Customers", "Customer")
                         .WithMany("CustomerCustomerDemo")
                         .HasForeignKey("CustomerId")
                         .HasConstraintName("FK_CustomerCustomerDemo_Customers");
 
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.CustomerDemographics", "CustomerType")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.CustomerDemographics", "CustomerType")
                         .WithMany("CustomerCustomerDemo")
                         .HasForeignKey("CustomerTypeId")
                         .HasConstraintName("FK_CustomerCustomerDemo");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Employees", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Employees", b =>
                 {
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Employees", "ReportsToNavigation")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Employees", "ReportsToNavigation")
                         .WithMany("InverseReportsToNavigation")
                         .HasForeignKey("ReportsTo")
                         .HasConstraintName("FK_Employees_Employees");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.EmployeeTerritories", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.EmployeeTerritories", b =>
                 {
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Employees", "Employee")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Employees", "Employee")
                         .WithMany("EmployeeTerritories")
                         .HasForeignKey("EmployeeId")
                         .HasConstraintName("FK_EmployeeTerritories_Employees");
 
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Territories", "Territory")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Territories", "Territory")
                         .WithMany("EmployeeTerritories")
                         .HasForeignKey("TerritoryId")
                         .HasConstraintName("FK_EmployeeTerritories_Territories");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.OrderDetails", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.OrderDetails", b =>
                 {
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Orders", "Order")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Orders", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .HasConstraintName("FK_Order_Details_Orders");
 
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Products", "Product")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Products", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .HasConstraintName("FK_Order_Details_Products");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Orders", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Orders", b =>
                 {
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Customers", "Customer")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Customers", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
                         .HasConstraintName("FK_Orders_Customers");
 
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Employees", "Employee")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Employees", "Employee")
                         .WithMany("Orders")
                         .HasForeignKey("EmployeeId")
                         .HasConstraintName("FK_Orders_Employees");
 
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Shippers", "ShipViaNavigation")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Shippers", "ShipViaNavigation")
                         .WithMany("Orders")
                         .HasForeignKey("ShipVia")
                         .HasConstraintName("FK_Orders_Shippers");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Products", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Products", b =>
                 {
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Categories", "Category")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Categories", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .HasConstraintName("FK_Products_Categories");
 
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Suppliers", "Supplier")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Suppliers", "Supplier")
                         .WithMany("Products")
                         .HasForeignKey("SupplierId")
                         .HasConstraintName("FK_Products_Suppliers");
                 });
 
-            modelBuilder.Entity("Faddiv.Testing.EntityFrameworkCore.Tests.Territories", b =>
+            modelBuilder.Entity("PocketTools.Testing.EntityFrameworkCore.Tests.Territories", b =>
                 {
-                    b.HasOne("Faddiv.Testing.EntityFrameworkCore.Tests.Region", "Region")
+                    b.HasOne("PocketTools.Testing.EntityFrameworkCore.Tests.Region", "Region")
                         .WithMany("Territories")
                         .HasForeignKey("RegionId")
                         .HasConstraintName("FK_Territories_Region");

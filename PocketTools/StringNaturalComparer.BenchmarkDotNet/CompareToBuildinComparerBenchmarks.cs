@@ -7,22 +7,22 @@ namespace StringNaturalComparerNS
     public class CompareToBuildinComparerBenchmarks : BenchmarksBase
     {
         private readonly IComparer<string> stringNaturalComparerOrdinal = 
-            Faddiv.DotNet.Text.StringNaturalComparer.Ordinal;
+            PocketTools.Core.Text.StringNaturalComparer.Ordinal;
         private readonly IComparer<string> stringComparer = 
             System.StringComparer.Ordinal;
 
         private readonly IComparer<string> stringNaturalComparerOrdinalIgnoreCase =
-            Faddiv.DotNet.Text.StringNaturalComparer.OrdinalIgnoreCase;
+            PocketTools.Core.Text.StringNaturalComparer.OrdinalIgnoreCase;
         private readonly IComparer<string> stringComparerOrdinalIgnoreCase =
             System.StringComparer.OrdinalIgnoreCase;
 
         private readonly IComparer<string> stringNaturalComparerInvariant =
-            Faddiv.DotNet.Text.StringNaturalComparer.InvariantCulture;
+            PocketTools.Core.Text.StringNaturalComparer.InvariantCulture;
         private readonly IComparer<string> stringComparerInvariant =
             System.StringComparer.InvariantCulture;
 
         private readonly IComparer<string> stringNaturalComparerInvariantIgnoreCase =
-            Faddiv.DotNet.Text.StringNaturalComparer.InvariantCultureIgnoreCase;
+            PocketTools.Core.Text.StringNaturalComparer.InvariantCultureIgnoreCase;
         private readonly IComparer<string> stringComparerInvariantIgnoreCase =
             System.StringComparer.InvariantCultureIgnoreCase;
 

@@ -1,4 +1,4 @@
-﻿using Faddiv.Testing.EntityFrameworkCore.Tests;
+﻿using PocketTools.Testing.EntityFrameworkCore.Tests;
 using Microsoft.EntityFrameworkCore;
 
 namespace NorthwindDatabase

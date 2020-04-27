@@ -1,7 +1,7 @@
 ﻿using Moq;
 using System;
 
-namespace Faddiv.Testing.Moq.Extensions
+namespace PocketTools.Testing.Moq.Extensions
 {
     partial class MockExtensions {
 	    public static void GetLastInvocationArguments<T, TParameter1, TReturn>(

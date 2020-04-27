@@ -4,7 +4,7 @@ using FluentAssertions.Primitives;
 using System;
 using System.Collections.Generic;
 
-namespace Faddiv.DotNet.Text.TestHelpers
+namespace PocketTools.Core.Text.TestHelpers
 {
     public static class ComparerAssertionExtensions
     {

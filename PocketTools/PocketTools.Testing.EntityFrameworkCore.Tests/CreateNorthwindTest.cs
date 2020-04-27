@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using Xunit;
 
-namespace Faddiv.Testing.EntityFrameworkCore.Tests
+namespace PocketTools.Testing.EntityFrameworkCore
 {
     public class CreateNorthwindTest
     {

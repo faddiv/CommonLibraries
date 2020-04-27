@@ -4,7 +4,7 @@ using NorthwindDatabase;
 using System.Data;
 using Xunit;
 
-namespace Faddiv.Testing.EntityFrameworkCore.Tests
+namespace PocketTools.Testing.EntityFrameworkCore
 {
     public class BaseTestDatabaseFactoryTests
     {

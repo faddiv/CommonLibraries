@@ -2,7 +2,7 @@ using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace Faddiv.Testing.Moq.Extensions.Tests
+namespace PocketTools.Testing.Moq.Extensions.Tests
 {
     public class MockExtensionsTests
     {

@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace Faddiv.Testing.Moq.Extensions
+namespace PocketTools.Testing.Moq.Extensions
 {
     public static partial class MockExtensions
     {

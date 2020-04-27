@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Faddiv.DotNet.Cleanup
+namespace PocketTools.Core.Cleanup
 {
     /// <summary>
     /// A class that holds multiple <see cref="IDisposable"/> object that needs to disposed together 

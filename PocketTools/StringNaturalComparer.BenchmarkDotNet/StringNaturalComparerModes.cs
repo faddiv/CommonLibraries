@@ -6,10 +6,10 @@ namespace StringNaturalComparerNS
     [ArtifactsPath(".\\StringNaturalComparerModes")]
     public class StringNaturalComparerModes : BenchmarksBase
     {
-        private readonly IComparer<string> currentCulture = Faddiv.DotNet.Text.StringNaturalComparer.CurrentCulture;
-        private readonly IComparer<string> currentCultureIgnoreCase = Faddiv.DotNet.Text.StringNaturalComparer.CurrentCultureIgnoreCase;
-        private readonly IComparer<string> ordinal = Faddiv.DotNet.Text.StringNaturalComparer.Ordinal;
-        private readonly IComparer<string> ordinalIgnoreCase = Faddiv.DotNet.Text.StringNaturalComparer.OrdinalIgnoreCase;
+        private readonly IComparer<string> currentCulture = PocketTools.Core.Text.StringNaturalComparer.CurrentCulture;
+        private readonly IComparer<string> currentCultureIgnoreCase = PocketTools.Core.Text.StringNaturalComparer.CurrentCultureIgnoreCase;
+        private readonly IComparer<string> ordinal = PocketTools.Core.Text.StringNaturalComparer.Ordinal;
+        private readonly IComparer<string> ordinalIgnoreCase = PocketTools.Core.Text.StringNaturalComparer.OrdinalIgnoreCase;
         private readonly string[][] dataSets = new[] {
             new[] {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2 a",

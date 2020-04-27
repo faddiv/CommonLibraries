@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Faddiv.Testing.EntityFrameworkCore.Tests.Migrations
+namespace PocketTools.Testing.EntityFrameworkCore.Tests.Migrations
 {
     public partial class Northwind : Migration
     {

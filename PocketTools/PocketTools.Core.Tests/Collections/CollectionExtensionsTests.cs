@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace Faddiv.DotNet.Collections
+namespace PocketTools.Core.Collections
 {
     public class CollectionExtensionsTests
     {

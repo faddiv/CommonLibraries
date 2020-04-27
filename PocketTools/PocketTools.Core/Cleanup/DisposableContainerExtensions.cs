@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Faddiv.DotNet.Cleanup
+namespace PocketTools.Core.Cleanup
 {
     /// <summary>
     /// Connects other classes from this namespace to the DisposableContainer.

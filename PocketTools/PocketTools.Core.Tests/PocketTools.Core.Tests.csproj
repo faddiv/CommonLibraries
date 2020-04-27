@@ -9,7 +9,7 @@
 
     <OutputType>Library</OutputType>
 
-    <RootNamespace>Faddiv.DotNet</RootNamespace>
+    <RootNamespace>PocketTools.Core</RootNamespace>
 
   </PropertyGroup>
 

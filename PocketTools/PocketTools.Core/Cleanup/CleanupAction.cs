@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Faddiv.DotNet.Cleanup
+namespace PocketTools.Core.Cleanup
 {
     /// <summary>
     /// Wrap a method in a <see cref="IDisposable"/> class so it is called on Dispose.

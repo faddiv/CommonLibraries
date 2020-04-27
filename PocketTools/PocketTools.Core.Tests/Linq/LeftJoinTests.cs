@@ -1,4 +1,4 @@
-using Faddiv.Testing.EntityFrameworkCore.Tests;
+using PocketTools.Testing.EntityFrameworkCore.Tests;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Xunit;
 
-namespace Faddiv.DotNet.Linq
+namespace PocketTools.Core.Linq
 {
     public class LeftJoinTests
     {

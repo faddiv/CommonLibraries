@@ -1,11 +1,11 @@
-﻿using Faddiv.DotNet.Text.TestHelpers;
+﻿using PocketTools.Core.Text.TestHelpers;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace Faddiv.DotNet.Text
+namespace PocketTools.Core.Text
 {
     public abstract class StringNaturalComparerCommonTests
     {

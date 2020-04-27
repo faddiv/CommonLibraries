@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Threading;
 
-namespace Faddiv.Testing.EntityFrameworkCore
+namespace PocketTools.Testing.EntityFrameworkCore
 {
     public class BaseTestDatabaseFactory
     {

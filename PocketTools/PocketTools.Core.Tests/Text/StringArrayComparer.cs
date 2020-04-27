@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Faddiv.DotNet.Text
+namespace PocketTools.Core.Text
 {
     public partial class StringComparerExperiments
     {

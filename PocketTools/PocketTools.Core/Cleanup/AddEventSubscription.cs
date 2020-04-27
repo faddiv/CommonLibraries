@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Faddiv.DotNet.Cleanup
+namespace PocketTools.Core.Cleanup
 {
     partial class DisposableContainerExtensions
     {

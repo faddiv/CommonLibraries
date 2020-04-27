@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace Faddiv.DotNet.Text
+namespace PocketTools.Core.Text
 {
     public class TestAgainstNaturalSortExtensions
     {
