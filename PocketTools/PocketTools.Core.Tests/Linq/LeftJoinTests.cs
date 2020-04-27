@@ -175,7 +175,7 @@ namespace PocketTools.Core.Linq
 
         private static TestDbContext CreateDb()
         {
-            return factory.CreateDbContext() as TestDbContext;
+            return factory.CreateDbContext();
         }
 
         private static List<Orders> GetList()

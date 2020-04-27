@@ -18,6 +18,9 @@ namespace PocketTools.Testing.EntityFrameworkCore.BenchmarkDotNet
             scaffold = new DatabaseScaffold();
             factory = new NorthWindDatabaseFactory(scaffold);
             factory.CreateDbContext();
+            // Pre-Create snapshot db.
+            var snapshot = new NorthWindDatabaseFactory(scaffold, snapshot: true);
+            snapshot.CreateDbContext().Dispose();
         }
 
         [Benchmark]

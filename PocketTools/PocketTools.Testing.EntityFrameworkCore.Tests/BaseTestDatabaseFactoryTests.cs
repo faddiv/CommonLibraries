@@ -54,7 +54,7 @@ namespace PocketTools.Testing.EntityFrameworkCore
             var instance = new NorthWindDatabaseFactory();
 
             // Act
-            var dbContext = instance.CreateDbContext() as TestDbContext;
+            var dbContext = instance.CreateDbContext();
 
             // Assert
             dbContext.Should().NotBeNull();
@@ -71,7 +71,7 @@ namespace PocketTools.Testing.EntityFrameworkCore
 
             // Act
             instance.CreateDbContext();
-            var dbContext = instance.CreateDbContext() as TestDbContext;
+            var dbContext = instance.CreateDbContext();
 
             // Assert
             count.Should().Be(1);
@@ -88,7 +88,7 @@ namespace PocketTools.Testing.EntityFrameworkCore
 
             // Act
             instance.CreateDbContext();
-            var dbContext = instance.CreateDbContext() as TestDbContext;
+            var dbContext = instance.CreateDbContext();
 
             // Assert
             count.Should().Be(0);
