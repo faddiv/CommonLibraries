@@ -64,9 +64,35 @@ namespace PocketTools.Testing.FluentAssertions.Extensions
         public static void Statisfying<T, C>(this IEnumerable<EnumerableElementAssertions<T, C>> assertions,
             Action<T, C> predicate)
         {
-            foreach (var item in assertions)
+            using (var scope = new AssertionScope())
             {
-                predicate(item.Subject, item.MatchedElement);
+                int index = 0;
+                foreach (var item in assertions)
+                {
+                    try
+                    {
+                        predicate(item.Subject, item.MatchedElement);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        scope.FailWith("Exception thrown: {0}", ex);
+                    }
+                    if(!scope.Succeeded)
+                    {
+                        var failures = scope.Discard();
+                        scope.FailWith("In the {context} the {0}. item didn't statisfyed all the condition on the matched element.", index);
+                        scope.FailWith("Item: {0}", item.Subject);
+                        scope.FailWith("MatchedElement: {0}", item.MatchedElement);
+                        scope.AddPreFormattedFailure("Failures:");
+                        foreach (var failure in failures)
+                        {
+                            scope.AddPreFormattedFailure(failure);
+                        }
+                        break;
+                    }
+                    index++;
+                }
             }
         }
     }

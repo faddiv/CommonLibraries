@@ -1,9 +1,8 @@
-﻿using System;
+﻿using FluentAssertions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using FluentAssertions;
-using FluentAssertions.Collections;
 using Xunit.Sdk;
 
 namespace PocketTools.Testing.FluentAssertions.Extensions
@@ -32,8 +31,7 @@ namespace PocketTools.Testing.FluentAssertions.Extensions
             Fun(() =>
             {
                 subject.Should().HaveMatchingElementsByKey(match, e => e.Id, e => e.Id);
-                Console.WriteLine("");
-            }).Should().Throw<XunitException>();
+            }).Should().Throw<XunitException>().WithMessage("Expected subject to have 2 item(s), but found 3.");
         }
 
         [Fact]
@@ -46,8 +44,13 @@ namespace PocketTools.Testing.FluentAssertions.Extensions
             Fun(() =>
             {
                 subject.Should().HaveMatchingElementsByKey(match, e => e.Id, e => e.Id);
-                Console.WriteLine("");
-            }).Should().Throw<XunitException>();
+            }).Should().Throw<XunitException>().WithMessage(@"Expected subject to have element with key 3 but not found. Checked element: 
+
+PocketTools.Testing.FluentAssertions.Extensions.SubjectTemp
+{
+   Id = 3
+   Name = ""Val 3""
+}");
         }
 
         [Fact]
@@ -58,9 +61,9 @@ namespace PocketTools.Testing.FluentAssertions.Extensions
             Fun(() =>
             {
                 subject.Should().HaveMatchingElementsByKey(match, e => e.Id, e => e.Id)
-                    .Statisfying((subject, matched) =>
+                    .Statisfying((item, matched) =>
                     {
-                        subject.Name.Should().Be(matched.Value);
+                        item.Name.Should().Be(matched.Value);
                     });
             }).Should().NotThrow();
         }
@@ -73,11 +76,45 @@ namespace PocketTools.Testing.FluentAssertions.Extensions
             Fun(() =>
             {
                 subject.Should().HaveMatchingElementsByKey(match, e => e.Id, e => e.Id)
-                    .Statisfying((subject, matched) =>
+                    .Statisfying((item, matched) =>
                     {
-                        subject.Name.Should().Be(matched.Value);
+                        item.Name.Should().Be(matched.Value);
                     });
-            }).Should().Throw<XunitException>();
+            }).Should().Throw<XunitException>().WithMessage(@"In the subject the 0. item didn't statisfyed all the condition on the matched element.
+Item: 
+
+PocketTools.Testing.FluentAssertions.Extensions.SubjectTemp
+{
+   Id = 1
+   Name = ""Example""
+}
+MatchedElement: 
+
+PocketTools.Testing.FluentAssertions.Extensions.MatchedTemp
+{
+   Id = 1
+   Value = ""Temp""
+}
+Failures:
+Expected item.Name to be ""Temp"" with a length of 4, but ""Example"" has a length of 7, differs near ""Exa"" (index 0).
+");
+        }
+
+        [Fact]
+        public void Statisfying_collect_the_exception_and_reports_it()
+        {
+            var subject = NewSubjectTemps(3, "Example");
+            var match = NewMatchedTemps(3, "Temp");
+            Fun(() =>
+            {
+                subject.Should().HaveMatchingElementsByKey(match, e => e.Id, e => e.Id)
+                    .Statisfying((item, matched) =>
+                    {
+                        throw new NullReferenceException();
+                    });
+            }).Should().Throw<XunitException>().WithMessage(@"*Failures:
+Exception thrown: System.NullReferenceException with message ""Object reference not set to an instance of an object.""
+     at *");
         }
 
         private static Action Fun(Action action)
