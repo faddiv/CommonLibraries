@@ -105,6 +105,7 @@ Expected item.Name to be ""Temp"" with a length of 4, but ""Example"" has a leng
         {
             var subject = NewSubjectTemps(3, "Example");
             var match = NewMatchedTemps(3, "Temp");
+
             Fun(() =>
             {
                 subject.Should().HaveMatchingElementsByKey(match, e => e.Id, e => e.Id)
