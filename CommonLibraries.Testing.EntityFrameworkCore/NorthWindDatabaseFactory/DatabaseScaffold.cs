@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.EntityFrameworkCore;
+using NorthWindDatabase.Properties;
 using System.Globalization;
 using System.IO;
 
@@ -44,7 +45,7 @@ namespace NorthwindDatabase
                 item.TypeConverterOption.NullValues("", "NULL");
             }
 
-            using var reader = new StringReader(NorthwindDatabase.Properties.Resources.ResourceManager.GetString(name));
+            using var reader = new StringReader(Resources.ResourceManager.GetString(name));
             using var csv = new CsvReader(reader, config);
             foreach (var item in csv.GetRecords<TEntity>())
             {

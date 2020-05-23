@@ -23,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NorthwindDatabase\NorthwindDatabase.csproj" />
+    <ProjectReference Include="..\..\CommonLibraries.Core\NorthwindDatabase\NorthwindDatabase.csproj" />
+    <ProjectReference Include="..\NorthWindDatabaseFactory\NorthWindDatabaseFactory.csproj" />
   </ItemGroup>
 
 </Project>

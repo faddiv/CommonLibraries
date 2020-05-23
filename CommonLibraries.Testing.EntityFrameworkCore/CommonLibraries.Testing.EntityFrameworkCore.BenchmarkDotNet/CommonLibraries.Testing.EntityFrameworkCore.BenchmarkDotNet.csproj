@@ -11,7 +11,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommonLibraries.Testing.EntityFrameworkCore\CommonLibraries.Testing.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\NorthwindDatabase\NorthwindDatabase.csproj" />
+    <ProjectReference Include="..\..\CommonLibraries.Core\NorthwindDatabase\NorthwindDatabase.csproj" />
+    <ProjectReference Include="..\NorthWindDatabaseFactory\NorthWindDatabaseFactory.csproj" />
   </ItemGroup>
 
 </Project>
