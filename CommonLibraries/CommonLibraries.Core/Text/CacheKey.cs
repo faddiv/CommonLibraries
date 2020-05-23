@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     internal class CacheKey : IEquatable<CacheKey>
     {

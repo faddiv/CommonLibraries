@@ -1,4 +1,4 @@
-﻿namespace PocketTools.Testing.FluentAssertions.Extensions
+﻿namespace CommonLibraries.Testing.FluentAssertions.Extensions
 {
     public class EnumerableElementAssertions<TSubject, CSubject>
     {

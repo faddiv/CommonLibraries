@@ -5,7 +5,7 @@ using System.Text;
 using Xunit;
 using Xunit.Sdk;
 
-namespace PocketTools.Testing.FluentAssertions.Extensions
+namespace CommonLibraries.Testing.FluentAssertions.Extensions
 {
     public class CallingTests
     {

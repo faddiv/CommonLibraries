@@ -5,7 +5,7 @@ using System.Linq;
 using Xunit;
 using Xunit.Sdk;
 
-namespace PocketTools.Testing.FluentAssertions.Extensions
+namespace CommonLibraries.Testing.FluentAssertions.Extensions
 {
     public class HaveMatchingElementsByKeyTests
     {
@@ -46,7 +46,7 @@ namespace PocketTools.Testing.FluentAssertions.Extensions
                 subject.Should().HaveMatchingElementsByKey(match, e => e.Id, e => e.Id);
             }).Should().Throw<XunitException>().WithMessage(@"Expected subject to have element with key 3 but not found. Checked element: 
 
-PocketTools.Testing.FluentAssertions.Extensions.SubjectTemp
+CommonLibraries.Testing.FluentAssertions.Extensions.SubjectTemp
 {
    Id = 3
    Name = ""Val 3""
@@ -83,14 +83,14 @@ PocketTools.Testing.FluentAssertions.Extensions.SubjectTemp
             }).Should().Throw<XunitException>().WithMessage(@"In the subject the 0. item didn't statisfyed all the condition on the matched element.
 Item: 
 
-PocketTools.Testing.FluentAssertions.Extensions.SubjectTemp
+CommonLibraries.Testing.FluentAssertions.Extensions.SubjectTemp
 {
    Id = 1
    Name = ""Example""
 }
 MatchedElement: 
 
-PocketTools.Testing.FluentAssertions.Extensions.MatchedTemp
+CommonLibraries.Testing.FluentAssertions.Extensions.MatchedTemp
 {
    Id = 1
    Value = ""Temp""

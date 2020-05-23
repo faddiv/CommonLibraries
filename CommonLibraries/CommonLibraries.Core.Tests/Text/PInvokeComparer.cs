@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public class PInvokeComparer : IComparer<string>
     {

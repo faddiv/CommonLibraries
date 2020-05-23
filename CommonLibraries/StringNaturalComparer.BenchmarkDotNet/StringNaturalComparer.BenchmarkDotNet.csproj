@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PocketTools.Core\PocketTools.Core.csproj" />
+    <ProjectReference Include="..\CommonLibraries.Core\CommonLibraries.Core.csproj" />
   </ItemGroup>
 
 </Project>

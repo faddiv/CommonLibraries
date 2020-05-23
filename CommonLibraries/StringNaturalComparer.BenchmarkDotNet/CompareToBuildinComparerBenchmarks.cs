@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using CommonLibraries.Core.Text;
 using System.Collections.Generic;
 
 namespace StringNaturalComparerNS
@@ -7,22 +8,22 @@ namespace StringNaturalComparerNS
     public class CompareToBuildinComparerBenchmarks : BenchmarksBase
     {
         private readonly IComparer<string> stringNaturalComparerOrdinal = 
-            PocketTools.Core.Text.StringNaturalComparer.Ordinal;
+            StringNaturalComparer.Ordinal;
         private readonly IComparer<string> stringComparer = 
             System.StringComparer.Ordinal;
 
         private readonly IComparer<string> stringNaturalComparerOrdinalIgnoreCase =
-            PocketTools.Core.Text.StringNaturalComparer.OrdinalIgnoreCase;
+            StringNaturalComparer.OrdinalIgnoreCase;
         private readonly IComparer<string> stringComparerOrdinalIgnoreCase =
             System.StringComparer.OrdinalIgnoreCase;
 
         private readonly IComparer<string> stringNaturalComparerInvariant =
-            PocketTools.Core.Text.StringNaturalComparer.InvariantCulture;
+            StringNaturalComparer.InvariantCulture;
         private readonly IComparer<string> stringComparerInvariant =
             System.StringComparer.InvariantCulture;
 
         private readonly IComparer<string> stringNaturalComparerInvariantIgnoreCase =
-            PocketTools.Core.Text.StringNaturalComparer.InvariantCultureIgnoreCase;
+            StringNaturalComparer.InvariantCultureIgnoreCase;
         private readonly IComparer<string> stringComparerInvariantIgnoreCase =
             System.StringComparer.InvariantCultureIgnoreCase;
 

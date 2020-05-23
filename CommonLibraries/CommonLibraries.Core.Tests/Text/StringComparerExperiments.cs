@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Xunit;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public partial class StringComparerExperiments
     {

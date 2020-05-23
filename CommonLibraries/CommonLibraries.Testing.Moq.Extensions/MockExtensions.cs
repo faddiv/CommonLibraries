@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace PocketTools.Testing.Moq.Extensions
+namespace CommonLibraries.Testing.Moq.Extensions
 {
     public static partial class MockExtensions
     {

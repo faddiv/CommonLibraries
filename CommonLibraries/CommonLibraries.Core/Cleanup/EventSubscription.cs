@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
-namespace PocketTools.Core.Cleanup
+namespace CommonLibraries.Core.Cleanup
 {
     /// <summary>
     /// Subscribe the provided handler to the provided event and on calling Dispose it unsubscribe it.

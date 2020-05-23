@@ -9,7 +9,7 @@
 
     <OutputType>Library</OutputType>
 
-    <RootNamespace>PocketTools.Core</RootNamespace>
+    <RootNamespace>CommonLibraries.Core</RootNamespace>
 
   </PropertyGroup>
 
@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PocketTools.Core\PocketTools.Core.csproj" />
+    <ProjectReference Include="..\CommonLibraries.Core\CommonLibraries.Core.csproj" />
     <ProjectReference Include="..\NorthwindDatabase\NorthwindDatabase.csproj" />
   </ItemGroup>
 

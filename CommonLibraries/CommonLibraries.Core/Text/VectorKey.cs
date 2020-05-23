@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     internal class VectorKey : IEquatable<VectorKey>
     {

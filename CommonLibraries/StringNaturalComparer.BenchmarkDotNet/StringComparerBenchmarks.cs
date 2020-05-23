@@ -6,7 +6,7 @@ namespace StringNaturalComparerNS
     [ArtifactsPath(".\\StringComparerBenchmarks")]
     public class StringComparerBenchmarks : BenchmarksBase
     {
-        private readonly IComparer<string> stringNaturalComparer = PocketTools.Core.Text.StringNaturalComparer.InvariantCultureIgnoreCase;
+        private readonly IComparer<string> stringNaturalComparer = CommonLibraries.Core.Text.StringNaturalComparer.InvariantCultureIgnoreCase;
         private readonly IComparer<string> naturalSortExtension = NaturalSort.Extension.StringComparerNaturalSortExtension.WithNaturalSort(System.StringComparer.InvariantCultureIgnoreCase);
         private readonly IComparer<string> pInvokeComparer = new PInvokeComparer();
         private readonly IComparer<string> stringComparer = System.StringComparer.InvariantCultureIgnoreCase;

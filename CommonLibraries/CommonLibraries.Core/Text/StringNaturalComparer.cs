@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Runtime.CompilerServices;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     /// <summary>
     /// Enhances string comparer with natural sorting functionality,

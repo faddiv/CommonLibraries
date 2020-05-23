@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>PocketTools.Testing.EntityFrameworkCore</RootNamespace>
+    <RootNamespace>CommonLibraries.Testing.EntityFrameworkCore</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

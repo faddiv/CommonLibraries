@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public class TestAgainstNaturalSortExtensions
     {

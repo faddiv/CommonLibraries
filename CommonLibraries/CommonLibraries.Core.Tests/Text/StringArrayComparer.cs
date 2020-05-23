@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public partial class StringComparerExperiments
     {

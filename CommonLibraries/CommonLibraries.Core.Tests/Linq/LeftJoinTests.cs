@@ -1,4 +1,4 @@
-using PocketTools.Testing.EntityFrameworkCore.Tests;
+using CommonLibraries.Testing.EntityFrameworkCore.Tests;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Xunit;
 
-namespace PocketTools.Core.Linq
+namespace CommonLibraries.Core.Linq
 {
     public class LeftJoinTests
     {
@@ -90,7 +90,8 @@ namespace PocketTools.Core.Linq
         [Fact]
         public void Queriable_LeftJoin_works_on_db_as_left_join()
         {
-            using(var db = CreateDb()) {
+            using (var db = CreateDb())
+            {
 
                 var orderDetails = db.Orders.Take(10).SelectMany(e => e.OrderDetails).ToList();
                 db.RemoveRange(orderDetails);

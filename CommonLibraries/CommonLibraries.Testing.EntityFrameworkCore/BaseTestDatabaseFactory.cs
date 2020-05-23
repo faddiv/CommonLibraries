@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Threading;
 
-namespace PocketTools.Testing.EntityFrameworkCore
+namespace CommonLibraries.Testing.EntityFrameworkCore
 {
     public class BaseTestDatabaseFactory<TDbContext>
         where TDbContext : DbContext

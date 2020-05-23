@@ -1,9 +1,9 @@
-﻿using PocketTools.Core.Text.TestHelpers;
+﻿using CommonLibraries.Core.Text.TestHelpers;
 using FluentAssertions;
 using System;
 using Xunit;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public class InvariantCultureIgnoreCaseTests : StringNaturalComparerCommonTests
     {

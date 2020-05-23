@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PocketTools.Testing.EntityFrameworkCore\PocketTools.Testing.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\CommonLibraries.Testing.EntityFrameworkCore\CommonLibraries.Testing.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

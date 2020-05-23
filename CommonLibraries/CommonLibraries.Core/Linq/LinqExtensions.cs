@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace PocketTools.Core.Linq
+namespace CommonLibraries.Core.Linq
 {
     public static class LinqExtensions
     {
@@ -31,7 +31,7 @@ namespace PocketTools.Core.Linq
             Func<TInner, TKey> innerKeySelector,
             Func<TOuter, TInner, TResult> resultSelector)
         {
-            return LeftJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector, null);
+            return outer.LeftJoin(inner, outerKeySelector, innerKeySelector, resultSelector, null);
         }
 
 
@@ -96,7 +96,7 @@ namespace PocketTools.Core.Linq
             Expression<Func<TInner, TKey>> innerKeySelector,
             Expression<Func<TOuter, TInner, TResult>> resultSelector)
         {
-            return LeftJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector, null);
+            return outer.LeftJoin(inner, outerKeySelector, innerKeySelector, resultSelector, null);
         }
 
         /// <summary>

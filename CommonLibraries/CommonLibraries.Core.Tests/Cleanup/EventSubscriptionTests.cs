@@ -2,7 +2,7 @@ using Moq;
 using System;
 using Xunit;
 
-namespace PocketTools.Core.Cleanup
+namespace CommonLibraries.Core.Cleanup
 {
     public class EventSubscriptionTests
     {

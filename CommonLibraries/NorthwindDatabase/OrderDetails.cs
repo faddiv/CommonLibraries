@@ -1,6 +1,6 @@
 ﻿using NorthwindDatabase;
 
-namespace PocketTools.Testing.EntityFrameworkCore.Tests
+namespace CommonLibraries.Testing.EntityFrameworkCore.Tests
 {
     public partial class OrderDetails
     {

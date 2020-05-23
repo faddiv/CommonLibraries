@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PocketTools.Testing.FluentAssertions.Extensions
+namespace CommonLibraries.Testing.FluentAssertions.Extensions
 {
     public static class Calling
     {

@@ -1,8 +1,8 @@
-﻿using PocketTools.Core.Text.TestHelpers;
+﻿using CommonLibraries.Core.Text.TestHelpers;
 using System;
 using Xunit;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public class OrdinalTests : StringNaturalComparerCommonTests
     {

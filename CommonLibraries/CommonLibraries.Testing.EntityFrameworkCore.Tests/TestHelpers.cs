@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using NorthwindDatabase;
 
-namespace PocketTools.Testing.EntityFrameworkCore
+namespace CommonLibraries.Testing.EntityFrameworkCore
 {
     public class TestHelpers
     {

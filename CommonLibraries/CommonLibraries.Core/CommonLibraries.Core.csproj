@@ -4,13 +4,13 @@
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>PocketTools</Authors>
+    <Authors>Viktor Faddi</Authors>
     <Company />
     <Description>This package contains the following apis: LeftJoin</Description>
     <PackageTags>LeftJoin</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>PocketTools</Copyright>
-    <RepositoryUrl>https://github.com/PocketTools/CommonLibraries</RepositoryUrl>
+    <Copyright>Viktor Faddi</Copyright>
+    <RepositoryUrl>https://github.com/CommonLibraries/CommonLibraries</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 

@@ -5,7 +5,7 @@ using NorthwindDatabase;
 using System;
 using System.IO;
 
-namespace PocketTools.Testing.EntityFrameworkCore.BenchmarkDotNet
+namespace CommonLibraries.Testing.EntityFrameworkCore.BenchmarkDotNet
 {
     [ArtifactsPath(".\\DatabaseCreationBenchmarks")]
     public class DatabaseCreationBenchmarks : BenchmarksBase

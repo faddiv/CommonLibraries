@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace PocketTools.Testing.EntityFrameworkCore.BenchmarkDotNet
+namespace CommonLibraries.Testing.EntityFrameworkCore.BenchmarkDotNet
 {
     public static class Program
     {

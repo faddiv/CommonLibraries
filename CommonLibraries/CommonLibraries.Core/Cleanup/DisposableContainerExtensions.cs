@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PocketTools.Core.Cleanup
+namespace CommonLibraries.Core.Cleanup
 {
     /// <summary>
     /// Connects other classes from this namespace to the DisposableContainer.
@@ -20,7 +20,7 @@ namespace PocketTools.Core.Cleanup
         /// <param name="instance">The instance which contains the event.</param>
         /// <param name="eventName">The name of the event. It is case sensitive.</param>
         /// <param name="handler">The handler which are subscripted to the event.</param>
-        public static void AddEventSubscription(this DisposableContainer container, 
+        public static void AddEventSubscription(this DisposableContainer container,
             object instance,
             string eventName,
             Delegate handler)

@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PocketTools.Testing.Moq.Extensions\PocketTools.Testing.Moq.Extensions.csproj" />
+    <ProjectReference Include="..\CommonLibraries.Testing.Moq.Extensions\CommonLibraries.Testing.Moq.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

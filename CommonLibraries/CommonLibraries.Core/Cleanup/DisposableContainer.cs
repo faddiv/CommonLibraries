@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace PocketTools.Core.Cleanup
+namespace CommonLibraries.Core.Cleanup
 {
     /// <summary>
     /// A class that holds multiple <see cref="IDisposable"/> object that needs to disposed together 
@@ -42,7 +42,7 @@ namespace PocketTools.Core.Cleanup
         /// </summary>
         public bool Disposed { get; private set; } = false;
 
-        [SuppressMessage("Design", "CA1031:Do not catch general exception types", 
+        [SuppressMessage("Design", "CA1031:Do not catch general exception types",
             Justification = "The exception handled in the eventhandler.")]
         protected virtual void Dispose(bool disposing)
         {

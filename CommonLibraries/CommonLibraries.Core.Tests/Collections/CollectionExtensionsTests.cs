@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace PocketTools.Core.Collections
+namespace CommonLibraries.Core.Collections
 {
     public class CollectionExtensionsTests
     {

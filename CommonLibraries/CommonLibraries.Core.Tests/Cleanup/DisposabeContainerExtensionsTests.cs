@@ -2,7 +2,7 @@
 using System;
 using Xunit;
 
-namespace PocketTools.Core.Cleanup
+namespace CommonLibraries.Core.Cleanup
 {
     public class DisposabeContainerExtensionsTests
     {
@@ -29,8 +29,8 @@ namespace PocketTools.Core.Cleanup
             var args = new EventArgs();
 
             container.AddEventSubscription(
-                source, 
-                nameof(source.InstanceHandler1), 
+                source,
+                nameof(source.InstanceHandler1),
                 new EventHandler(instanceMock.Object.EventHandler));
             source.InvokeInstanceHandler1(args);
             container.Dispose();
@@ -48,7 +48,7 @@ namespace PocketTools.Core.Cleanup
             var args = new EventArgs();
 
             container.AddEventSubscription<DummyEventSource>(
-                nameof(DummyEventSource.StaticHandler1), 
+                nameof(DummyEventSource.StaticHandler1),
                 new EventHandler(instanceMock.Object.EventHandler));
             DummyEventSource.InvokeStaticHandler1(args);
             container.Dispose();
@@ -86,8 +86,8 @@ namespace PocketTools.Core.Cleanup
             var args = new EventArgs();
 
             container.AddEventSubscription<object, EventArgs>(
-                source, 
-                nameof(source.InstanceHandler1), 
+                source,
+                nameof(source.InstanceHandler1),
                 instanceMock.Object.EventHandler);
             source.InvokeInstanceHandler1(args);
             container.Dispose();
@@ -107,7 +107,7 @@ namespace PocketTools.Core.Cleanup
             var args = new EventArgs();
 
             container.AddEventSubscription<DummyEventSource, object, EventArgs>(
-                nameof(DummyEventSource.StaticHandler1), 
+                nameof(DummyEventSource.StaticHandler1),
                 instanceMock.Object.EventHandler);
             DummyEventSource.InvokeStaticHandler1(args);
             container.Dispose();

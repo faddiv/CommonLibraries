@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PocketTools.Core.Collections
+namespace CommonLibraries.Core.Collections
 {
     public static class CollectionExtensions
     {

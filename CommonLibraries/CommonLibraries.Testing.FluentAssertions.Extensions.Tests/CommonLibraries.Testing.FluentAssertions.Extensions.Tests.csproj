@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>PocketTools.Testing.FluentAssertions.Extensions</RootNamespace>
+    <RootNamespace>CommonLibraries.Testing.FluentAssertions.Extensions</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PocketTools.Testing.FluentAssertions.Extensions\PocketTools.Testing.FluentAssertions.Extensions.csproj" />
+    <ProjectReference Include="..\CommonLibraries.Testing.FluentAssertions.Extensions\CommonLibraries.Testing.FluentAssertions.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,8 +1,8 @@
-﻿using System.Globalization;
-using PocketTools.Core.Text.TestHelpers;
+﻿using CommonLibraries.Core.Text.TestHelpers;
+using System.Globalization;
 using Xunit;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public class TurkishCultureTests
     {

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PocketTools.Testing.FluentAssertions.Extensions
+namespace CommonLibraries.Testing.FluentAssertions.Extensions
 {
     public static class EnumerableAssertionsExtension
     {
@@ -78,9 +78,9 @@ namespace PocketTools.Testing.FluentAssertions.Extensions
 
                         scope.FailWith("Exception thrown: {0}", ex);
                     }
-                    if(!scope.Succeeded)
+                    var failures = scope.Discard();
+                    if (failures.Length > 0)
                     {
-                        var failures = scope.Discard();
                         scope.FailWith("In the {context} the {0}. item didn't statisfyed all the condition on the matched element.", index);
                         scope.FailWith("Item: {0}", item.Subject);
                         scope.FailWith("MatchedElement: {0}", item.MatchedElement);

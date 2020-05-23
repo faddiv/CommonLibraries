@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PocketTools.Core.Cleanup
+namespace CommonLibraries.Core.Cleanup
 {
     partial class DisposableContainerExtensions
     {

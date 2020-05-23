@@ -1,11 +1,11 @@
-﻿using PocketTools.Core.Text.TestHelpers;
+﻿using CommonLibraries.Core.Text.TestHelpers;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public abstract class StringNaturalComparerCommonTests
     {

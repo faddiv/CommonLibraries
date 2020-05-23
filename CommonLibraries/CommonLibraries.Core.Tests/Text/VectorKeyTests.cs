@@ -2,7 +2,7 @@
 using System;
 using Xunit;
 
-namespace PocketTools.Core.Text
+namespace CommonLibraries.Core.Text
 {
     public class VectorKeyTests
     {
