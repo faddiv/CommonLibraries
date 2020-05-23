@@ -198,5 +198,57 @@ namespace CommonLibraries.Core.Collections
             // Assert
             func.Should().Throw<ArgumentNullException>();
         }
+
+        [Fact]
+        public void ToChunks_requires_an_enumeration()
+        {
+            IEnumerable<int> enumeration = null; ;
+
+            Calling(() => enumeration.ToChunks(3).ToList())
+                .Should().Throw<ArgumentNullException>()
+                .WithMessage("Value cannot be null. (Parameter 'enumerable')");
+        }
+
+        [Fact]
+        public void ToChunks_requires_an_chunkSize_bigger_than_0()
+        {
+            var enumeration = Enumerable.Range(1, 10);
+
+            Calling(() => enumeration.ToChunks(0).ToList())
+                .Should().Throw<ArgumentException>()
+                .WithMessage("ChunkSize must be at least 1. (Parameter 'chunkSize')");
+        }
+
+        [Fact]
+        public void ToChunks_splits_the_list_into_partitions()
+        {
+            var enumeration = Enumerable.Range(1, 9);
+
+            var chunks = enumeration.ToChunks(3).ToList();
+
+            chunks.Should().HaveCount(3);
+            chunks.Should().OnlyContain(e => e.Count == 3);
+
+            chunks.SelectMany(e => e).Should().BeEquivalentTo(enumeration);
+        }
+
+        [Fact]
+        public void ToChunks_splits_the_list_into_partitions_with_remainder()
+        {
+            var enumeration = Enumerable.Range(1, 10);
+
+            var chunks = enumeration.ToChunks(3).ToList();
+
+            chunks.Should().HaveCount(4);
+            chunks.Take(3).Should().OnlyContain(e => e.Count == 3);
+            chunks.Last().Should().HaveCount(1);
+
+            chunks.SelectMany(e => e).Should().BeEquivalentTo(enumeration);
+        }
+
+        public Func<TR> Calling<TR>(Func<TR> func)
+        {
+            return func;
+        }
     }
 }

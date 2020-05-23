@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Viktor Faddi</Authors>
     <Company />
-    <Description>This package contains the following apis: LeftJoin</Description>
+    <Description>This package contains the following apis: Collection related extensions, Disposable related api, string natural comparer.</Description>
     <PackageTags>LeftJoin</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Viktor Faddi</Copyright>

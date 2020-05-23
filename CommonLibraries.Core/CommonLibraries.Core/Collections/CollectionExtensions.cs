@@ -111,5 +111,38 @@ namespace CommonLibraries.Core.Collections
             }
             return default;
         }
+
+        /// <summary>
+        /// Breaks the enumeration into equal sized lists. The last list may be smaller than chunk size.
+        /// </summary>
+        /// <typeparam name="T">Type of the list elements.</typeparam>
+        /// <param name="enumerable">Enumerable that are broken into chunks.</param>
+        /// <param name="chunkSize">Desired size of the chunks</param>
+        /// <returns>
+        /// An enumeration which each element contains a list. 
+        /// Each list contains the next x element where x is chunk size and the last element may be smaller.
+        /// </returns>
+        public static IEnumerable<List<T>> ToChunks<T>(this IEnumerable<T> enumerable, int chunkSize)
+        {
+            if (enumerable is null)
+                throw new ArgumentNullException(nameof(enumerable));
+            if (chunkSize < 1)
+                throw new ArgumentException($"ChunkSize must be at least 1.", nameof(chunkSize));
+
+            var enumerator = enumerable.GetEnumerator();
+            bool hasNext = enumerator.MoveNext();
+            do
+            {
+                var currentChunkIndex = 0;
+                var list = new List<T>();
+                while (hasNext && currentChunkIndex < chunkSize)
+                {
+                    list.Add(enumerator.Current);
+                    hasNext = enumerator.MoveNext();
+                    currentChunkIndex++;
+                }
+                yield return list;
+            } while (hasNext);
+        }
     }
 }
