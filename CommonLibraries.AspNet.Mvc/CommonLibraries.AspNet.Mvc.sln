@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocketTools.AspNet.Mvc", "PocketTools.AspNet.Mvc\PocketTools.AspNet.Mvc.csproj", "{9EFAA4B8-24B1-4F1C-883C-BB2867635669}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonLibraries.AspNet.Mvc", "CommonLibraries.AspNet.Mvc\CommonLibraries.AspNet.Mvc.csproj", "{9EFAA4B8-24B1-4F1C-883C-BB2867635669}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketTools.AspNet.Mvc.Tests", "PocketTools.AspNet.Mvc.Tests\PocketTools.AspNet.Mvc.Tests.csproj", "{91E707E8-AC20-4A5B-8126-ACB98C6BA2A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonLibraries.AspNet.Mvc.Tests", "CommonLibraries.AspNet.Mvc.Tests\CommonLibraries.AspNet.Mvc.Tests.csproj", "{91E707E8-AC20-4A5B-8126-ACB98C6BA2A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLibraries.AspNet.Mvc.Tests.Core", "CommonLibraries.AspNet.Mvc.Tests.Core\CommonLibraries.AspNet.Mvc.Tests.Core.csproj", "{CD3150CD-C9AA-4917-8CAD-B651B48EEE07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{91E707E8-AC20-4A5B-8126-ACB98C6BA2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91E707E8-AC20-4A5B-8126-ACB98C6BA2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91E707E8-AC20-4A5B-8126-ACB98C6BA2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD3150CD-C9AA-4917-8CAD-B651B48EEE07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD3150CD-C9AA-4917-8CAD-B651B48EEE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD3150CD-C9AA-4917-8CAD-B651B48EEE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD3150CD-C9AA-4917-8CAD-B651B48EEE07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

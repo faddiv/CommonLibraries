@@ -1,16 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFramework>net47</TargetFramework>
-    <RootNamespace>PocketTools.AspNet.Mvc</RootNamespace>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
   </PropertyGroup>
+
+  <ItemGroup  Condition="'$(TargetFramework)' == 'netcoreapp2.1'" >
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.1.0" />
+  </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="1.2.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="Moq" Version="4.14.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -19,10 +20,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\CommonLibraries.AspNet.Mvc\CommonLibraries.AspNet.Mvc.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Web" />
   </ItemGroup>
 </Project>
