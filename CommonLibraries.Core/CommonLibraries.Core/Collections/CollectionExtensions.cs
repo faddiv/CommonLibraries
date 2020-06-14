@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace CommonLibraries.Core.Collections
@@ -143,6 +143,38 @@ namespace CommonLibraries.Core.Collections
                 }
                 yield return list;
             } while (hasNext);
+        }
+
+        /// <summary>
+        /// Sorts the elements in the entire <see cref="List{T}"/> using the default comparer
+        /// on the key selected by the <paramref name="keySelector"/>.
+        /// </summary>
+        /// <typeparam name="TValue">The type of elements in the list.</typeparam>
+        /// <typeparam name="TKey">The type of key in the elements.</typeparam>
+        /// <param name="list">A list of values to sort.</param>
+        /// <param name="keySelector">A function to extract a key from an element.</param>
+        public static void SortByKey<TValue, TKey>(this List<TValue> list, Func<TValue, TKey> keySelector)
+        {
+            if (list is null)
+                throw new ArgumentNullException(nameof(list));
+
+            list.Sort(new KeyComparer<TValue, TKey>(keySelector));
+        }
+
+        /// <summary>
+        /// Sorts the elements in the entire <see cref="Array"/> using the default comparer
+        /// on the key selected by the <paramref name="keySelector"/>.
+        /// </summary>
+        /// <typeparam name="TValue">The type of elements in the array.</typeparam>
+        /// <typeparam name="TKey">The type of key in the elements.</typeparam>
+        /// <param name="list">A list of values to sort.</param>
+        /// <param name="keySelector">A function to extract a key from an element.</param>
+        public static void SortByKey<TValue, TKey>(this TValue[] array, Func<TValue, TKey> keySelector)
+        {
+            if (array is null)
+                throw new ArgumentNullException(nameof(array));
+
+            Array.Sort(array, new KeyComparer<TValue, TKey>(keySelector));
         }
     }
 }
