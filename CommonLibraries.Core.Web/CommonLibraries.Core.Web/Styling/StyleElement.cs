@@ -11,6 +11,7 @@ namespace Blazorify.Utilities.Styling
         }
 
         public string Property { get; }
+
         public string Value { get; }
 
         public override bool Equals(object obj)
@@ -23,8 +24,8 @@ namespace Blazorify.Utilities.Styling
         public override int GetHashCode()
         {
             int hashCode = -1027930222;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Property);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Value);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(Property);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(Value);
             return hashCode;
         }
 

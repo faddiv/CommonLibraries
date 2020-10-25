@@ -33,6 +33,7 @@ namespace Blazorify.Utilities.Styling
                 {
                     style.Add(item.Item1, item.Item2, item.Item3);
                 }
+
                 return style;
             }
         }
@@ -46,6 +47,7 @@ namespace Blazorify.Utilities.Styling
                 {
                     style.Add(item.Item1, item.Item2, item.Item3);
                 }
+
                 return style;
             }
         }
@@ -59,6 +61,7 @@ namespace Blazorify.Utilities.Styling
                 {
                     style.Add(item.Item1, item.Item2, item.Item3);
                 }
+
                 return style;
             }
         }

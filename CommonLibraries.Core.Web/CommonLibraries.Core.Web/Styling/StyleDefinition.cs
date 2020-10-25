@@ -9,7 +9,6 @@ namespace Blazorify.Utilities.Styling
 {
     public class StyleDefinition
     {
-
         private readonly List<StyleElement> _styles;
         private readonly ThreadsafeStyleBuilderCache _cache;
 
@@ -29,7 +28,10 @@ namespace Blazorify.Utilities.Styling
 
         public StyleDefinition Add(string property, Func<string> value, bool condition = true)
         {
-            if (value is null) throw new ArgumentNullException(nameof(value));
+            if (value is null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
 
             AddInner(property, value(), condition);
             return this;
@@ -37,7 +39,10 @@ namespace Blazorify.Utilities.Styling
 
         public StyleDefinition Add(string property, string value, Func<bool> predicate)
         {
-            if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+            if (predicate is null)
+            {
+                throw new ArgumentNullException(nameof(predicate));
+            }
 
             AddInner(property, value, predicate());
             return this;
@@ -45,8 +50,15 @@ namespace Blazorify.Utilities.Styling
 
         public StyleDefinition Add(string property, Func<string> value, Func<bool> predicate)
         {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            if (predicate is null) throw new ArgumentNullException(nameof(predicate));
+            if (value is null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (predicate is null)
+            {
+                throw new ArgumentNullException(nameof(predicate));
+            }
 
             AddInner(property, value(), predicate());
             return this;
@@ -55,26 +67,34 @@ namespace Blazorify.Utilities.Styling
         public StyleDefinition Add(StyleDefinition styleBuilder)
         {
             if (styleBuilder is null)
+            {
                 return this;
+            }
 
             foreach (var item in styleBuilder._styles)
             {
                 AddInner(item.Property, item.Value);
             }
+
             return this;
         }
 
         public StyleDefinition Add(IReadOnlyDictionary<string, object> attributes)
         {
             if (attributes is null)
+            {
                 return this;
+            }
 
             if (attributes.TryGetValue("style", out var style)
                 && !(style is null))
             {
                 var styleStr = (style as string) ?? style.ToString();
                 if (styleStr.Length == 0)
+                {
                     return this;
+                }
+
                 var stylePairs = styleStr.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var stylePairStr in stylePairs)
                 {
@@ -83,16 +103,20 @@ namespace Blazorify.Utilities.Styling
                     {
                         throw new Exception($"Invalid style found in the attributes.style: '{styleStr}'");
                     }
+
                     AddInner(stylePair[0].Trim(), stylePair[1].Trim());
                 }
             }
+
             return this;
         }
 
         public StyleDefinition Add(object values)
         {
             if (values is null)
+            {
                 return this;
+            }
 
             var type = values.GetType();
             var extractor = _cache.GetOrAdd(type, CreateExtractor);
@@ -104,11 +128,17 @@ namespace Blazorify.Utilities.Styling
         public StyleDefinition AddMultiple(params object[] values)
         {
             if (values == null || values.Length == 0)
+            {
                 return this;
+            }
+
             foreach (var item in values)
             {
                 if (item == null)
+                {
                     continue;
+                }
+
                 if (item is ValueTuple<string, string> type1)
                 {
                     AddInner(type1.Item1, type1.Item2);
@@ -146,6 +176,7 @@ namespace Blazorify.Utilities.Styling
                     Add(item);
                 }
             }
+
             return this;
         }
 
@@ -197,6 +228,7 @@ namespace Blazorify.Utilities.Styling
                 var conditionalAdd = Expression.IfThen(notNull, invokation);
                 lines.Add(conditionalAdd);
             }
+
             var body = Expression.Block(new ParameterExpression[] { valuesVar }, lines);
             var method = Expression.Lambda<ProcessStyleDelegate>(body, valuesParam, addMethod);
             return method.Compile();
@@ -205,8 +237,9 @@ namespace Blazorify.Utilities.Styling
         private static void ValidateProperty(string property)
         {
             if (string.IsNullOrEmpty(property))
+            {
                 throw new ArgumentException($"'{nameof(property)}' cannot be null or empty", nameof(property));
+            }
         }
-
     }
 }

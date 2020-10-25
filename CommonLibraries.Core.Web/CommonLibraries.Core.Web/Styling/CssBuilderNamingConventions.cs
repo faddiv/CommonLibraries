@@ -6,7 +6,6 @@ namespace Blazorify.Utilities.Styling
 {
     public static class CssBuilderNamingConventions
     {
-
         private const char Hyphen = '-';
         private const char Underscore = '_';
 
@@ -66,6 +65,7 @@ namespace Blazorify.Utilities.Styling
                     {
                         builder.Append(Hyphen);
                     }
+
                     builder.Append(char.ToLowerInvariant(ch));
                 }
                 else
@@ -73,6 +73,7 @@ namespace Blazorify.Utilities.Styling
                     builder.Append(ch);
                 }
             }
+
             return builder.ToString();
         }
     }
