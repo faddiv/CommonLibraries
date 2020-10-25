@@ -174,6 +174,26 @@ namespace Blazorify.Utilities.Styling
             result1.Should().Be(result2);
         }
 
+        [Theory]
+        [InlineData("c1", true)]
+        [InlineData("c2", false)]
+        public void HasClass_returns_true_if_class_found(string className, bool found)
+        {
+            var css = CreateCssDefinition().Add("c1");
+
+            css.HasClass(className).Should().Be(found);
+        }
+
+        [Fact]
+        public void CssClasses_contains_added_classes()
+        {
+            var builder = CreateCssDefinition()
+                .Add("c1")
+                .Add("c2")
+                .Add("c3");
+
+            builder.CssClasses.Should().HaveCount(3);
+        }
         public enum Dummy
         {
             NameName_name = 1,

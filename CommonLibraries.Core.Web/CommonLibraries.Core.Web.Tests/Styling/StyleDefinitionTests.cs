@@ -255,6 +255,26 @@ namespace Blazorify.Utilities.Styling
             result.Should().Be(Result);
         }
 
+        [Theory]
+        [InlineData(Width, true)]
+        [InlineData(Height, false)]
+        public void HasStyle_returns_true_if_class_found(string propertyName, bool found)
+        {
+            var style = CreateStyleDefinition().Add(Width, Value1);
+
+            style.HasStyle(propertyName).Should().Be(found);
+        }
+
+        [Theory]
+        [InlineData(Width, Value1)]
+        [InlineData(Height, null)]
+        public void GetPropertyValue_returns_value_if_found(string propertyName, string value)
+        {
+            var style = CreateStyleDefinition().Add(Width, Value1);
+
+            style.GetPropertyValue(propertyName).Should().Be(value);
+        }
+
         [Fact]
         public void AddMultiple_adds_Object()
         {
@@ -269,6 +289,17 @@ namespace Blazorify.Utilities.Styling
                 .ToString();
 
             result.Should().Be(Result);
+        }
+
+        [Fact]
+        public void Styles_contains_added_stlyes()
+        {
+            var builder = CreateStyleDefinition()
+                .Add(Width, Value1)
+                .Add(Height, Value2)
+                .Add(Border, Value3);
+
+            builder.Styles.Should().HaveCount(3);
         }
     }
 }

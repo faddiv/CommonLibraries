@@ -1,6 +1,7 @@
 using Blazorify.Utilities.Styling.Internals;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -14,9 +15,11 @@ namespace Blazorify.Utilities.Styling
 
         internal StyleDefinition(ThreadsafeStyleBuilderCache cache)
         {
-            _styles = new List<StyleElement>();
             _cache = cache;
+            _styles = new List<StyleElement>();
         }
+
+        public IReadOnlyList<StyleElement> Styles => _styles;
 
         public StyleDefinition Add(string property, string value, bool condition = true)
         {
@@ -98,35 +101,6 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        private ProcessStyleDelegate CreateExtractor(Type type)
-        {
-            var lines = new List<Expression>();
-            var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            var valuesParam = Expression.Parameter(typeof(object));
-            var addMethod = Expression.Parameter(typeof(AddStyleDelegate));
-            var valuesVar = Expression.Variable(type);
-            var castedValuesParam = Expression.Convert(valuesParam, type);
-            var valuesVarAssigment = Expression.Assign(valuesVar, castedValuesParam);
-            var trueConstant = Expression.Constant(true);
-            var nullConstant = Expression.Constant(null, typeof(object));
-            var toStringMethod = typeof(object).GetMethod(nameof(object.ToString));
-            lines.Add(valuesVarAssigment);
-            foreach (var property in properties)
-            {
-                var valueGetter = (Expression)Expression.Property(valuesVar, property);
-                var notNull = Expression.ReferenceNotEqual(Expression.Convert(valueGetter, typeof(object)), nullConstant);
-                var stringValue = Expression.Call(valueGetter, toStringMethod);
-                var className = CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen(property);
-                var styleNameConstant = Expression.Constant(className);
-                var invokation = Expression.Invoke(addMethod, styleNameConstant, stringValue, trueConstant);
-                var conditionalAdd = Expression.IfThen(notNull, invokation);
-                lines.Add(conditionalAdd);
-            }
-            var body = Expression.Block(new ParameterExpression[] { valuesVar }, lines);
-            var method = Expression.Lambda<ProcessStyleDelegate>(body, valuesParam, addMethod);
-            return method.Compile();
-        }
-
         public StyleDefinition AddMultiple(params object[] values)
         {
             if (values == null || values.Length == 0)
@@ -175,6 +149,16 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        public bool HasStyle(string propertyName)
+        {
+            return _styles.Any(e => e.Property == propertyName);
+        }
+
+        public string GetPropertyValue(string propertyName)
+        {
+            return _styles.Find(e => e.Property == propertyName).Value;
+        }
+
         public override string ToString()
         {
             return string.Join(";", _styles);
@@ -187,6 +171,35 @@ namespace Blazorify.Utilities.Styling
             {
                 _styles.Add(new StyleElement(property, value));
             }
+        }
+
+        private ProcessStyleDelegate CreateExtractor(Type type)
+        {
+            var lines = new List<Expression>();
+            var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var valuesParam = Expression.Parameter(typeof(object));
+            var addMethod = Expression.Parameter(typeof(AddStyleDelegate));
+            var valuesVar = Expression.Variable(type);
+            var castedValuesParam = Expression.Convert(valuesParam, type);
+            var valuesVarAssigment = Expression.Assign(valuesVar, castedValuesParam);
+            var trueConstant = Expression.Constant(true);
+            var nullConstant = Expression.Constant(null, typeof(object));
+            var toStringMethod = typeof(object).GetMethod(nameof(object.ToString));
+            lines.Add(valuesVarAssigment);
+            foreach (var property in properties)
+            {
+                var valueGetter = (Expression)Expression.Property(valuesVar, property);
+                var notNull = Expression.ReferenceNotEqual(Expression.Convert(valueGetter, typeof(object)), nullConstant);
+                var stringValue = Expression.Call(valueGetter, toStringMethod);
+                var className = CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen(property);
+                var styleNameConstant = Expression.Constant(className);
+                var invokation = Expression.Invoke(addMethod, styleNameConstant, stringValue, trueConstant);
+                var conditionalAdd = Expression.IfThen(notNull, invokation);
+                lines.Add(conditionalAdd);
+            }
+            var body = Expression.Block(new ParameterExpression[] { valuesVar }, lines);
+            var method = Expression.Lambda<ProcessStyleDelegate>(body, valuesParam, addMethod);
+            return method.Compile();
         }
 
         private static void ValidateProperty(string property)

@@ -26,7 +26,7 @@ namespace Blazorify.Utilities.Styling
             _cache = options.GetCache();
         }
 
-        
+        public IReadOnlyList<string> CssClasses => _cssClasses;
 
         public override string ToString()
         {
@@ -164,6 +164,11 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        public bool HasClass(string className)
+        {
+            return _cssClasses.Contains(className);
+        }
+
         private ProcessCssDelegate CreateExtractor(Type type)
         {
             var lines = new List<Expression>();
@@ -198,7 +203,7 @@ namespace Blazorify.Utilities.Styling
 
             foreach (var cssClass in value.Split(_separatorArray, StringSplitOptions.RemoveEmptyEntries))
             {
-                if (_options.ExcludeDuplication && _cssClasses.Contains(cssClass))
+                if (_options.ExcludeDuplication && HasClass(cssClass))
                     continue;
                 _cssClasses.Add(cssClass);
             }

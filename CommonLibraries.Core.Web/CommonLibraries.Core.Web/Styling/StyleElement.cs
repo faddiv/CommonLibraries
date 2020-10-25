@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Blazorify.Utilities.Styling
 {
-    internal struct StyleElement
+    public struct StyleElement
     {
         public StyleElement(string property, string value)
         {
