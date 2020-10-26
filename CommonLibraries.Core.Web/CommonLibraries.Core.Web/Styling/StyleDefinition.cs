@@ -234,7 +234,7 @@ namespace Blazorify.Utilities.Styling
             return method.Compile();
         }
 
-        private static void ValidateProperty(string property)
+        private void ValidateProperty(string property)
         {
             if (string.IsNullOrEmpty(property))
             {

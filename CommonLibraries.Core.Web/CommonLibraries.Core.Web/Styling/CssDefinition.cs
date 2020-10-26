@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace Blazorify.Utilities.Styling
 {
+    /// <summary>
+    /// Represents a list of css classes. It is written into string with the ToString call.
+    /// </summary>
     public class CssDefinition
     {
         private const string Separator = " ";
@@ -32,13 +35,18 @@ namespace Blazorify.Utilities.Styling
             _cache = options.GetCache();
         }
 
+        /// <summary>
+        /// Gets the list of added class names.
+        /// </summary>
         public IReadOnlyList<string> CssClasses => _cssClasses;
 
-        public override string ToString()
-        {
-            return string.Join(Separator, _cssClasses);
-        }
-
+        /// <summary>
+        /// Adds multiple class definition which can be string, enum, (string, bool),
+        /// (string, Func&gt;bool&lt;), IEnumerable&gt;string&lt;, another CssDefinition,
+        /// IReadOnlyDictionary&gt;string, object&lt; with an optional class key.
+        /// </summary>
+        /// <param name="values">The list of class definitions.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public CssDefinition AddMultiple(params object[] values)
         {
             if (values == null || values.Length == 0)
@@ -183,6 +191,12 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        /// <summary>
+        /// Checks if the dictionary has the class element. If yes then adds it's value as classes from it.
+        /// The dictionary can be null.
+        /// </summary>
+        /// <param name="attributes">The attributes dictionary.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public CssDefinition Add(IReadOnlyDictionary<string, object> attributes)
         {
             if (attributes != null
@@ -195,9 +209,23 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        /// <summary>
+        /// Indicates if the className is added to this.
+        /// </summary>
+        /// <param name="className">The class name to check.</param>
+        /// <returns>True if already added; otherwise false.</returns>
         public bool HasClass(string className)
         {
             return _cssClasses.Contains(className);
+        }
+
+        /// <summary>
+        /// Returns with the finished css class definition list.
+        /// </summary>
+        /// <returns>The class names separated by spaces.</returns>
+        public override string ToString()
+        {
+            return string.Join(Separator, _cssClasses);
         }
 
         private ProcessCssDelegate CreateExtractor(Type type)

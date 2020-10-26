@@ -2,18 +2,55 @@ using System.Collections.Generic;
 
 namespace Blazorify.Utilities.Styling
 {
+    /// <summary>
+    /// Represents a style property and value pair.
+    /// </summary>
     public struct StyleElement
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StyleElement"/> struct.
+        /// </summary>
+        /// <param name="property">The property component of the style element.</param>
+        /// <param name="value">The value component of the style element.</param>
         public StyleElement(string property, string value)
         {
             Property = property;
             Value = value;
         }
 
+        /// <summary>
+        /// The property component of the style element.
+        /// </summary>
         public string Property { get; }
 
+        /// <summary>
+        /// The value component of the style element.
+        /// </summary>
         public string Value { get; }
 
+        /// <summary>
+        /// Checks if left equals to right by Property and Value.
+        /// </summary>
+        /// <param name="left">Left element.</param>
+        /// <param name="right">Right element.</param>
+        /// <returns>true if the Property and Value equals by case sensitive comparison.</returns>
+        public static bool operator ==(StyleElement left, StyleElement right)
+        {
+            return left.Equals(right);
+        }
+
+        /// <summary>
+        /// Checks if left is not equal to right by Property and Value.
+        /// </summary>
+        /// <param name="left">Left element.</param>
+        /// <param name="right">Right element.</param>
+        /// <returns>true if the Property and Value is not equal by case sensitive comparison.</returns>
+        public static bool operator !=(StyleElement left, StyleElement right)
+        {
+            return !(left == right);
+        }
+
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
             return obj is StyleElement element &&
@@ -21,6 +58,7 @@ namespace Blazorify.Utilities.Styling
                    Value == element.Value;
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             int hashCode = -1027930222;
@@ -29,16 +67,10 @@ namespace Blazorify.Utilities.Styling
             return hashCode;
         }
 
-        public static bool operator ==(StyleElement left, StyleElement right)
-        {
-            return left.Equals(right);
-        }
-
-        public static bool operator !=(StyleElement left, StyleElement right)
-        {
-            return !(left == right);
-        }
-
+        /// <summary>
+        /// Returns the composed "Property:Value" pair as string.
+        /// </summary>
+        /// <returns>The "Property:Value" string.</returns>
         public override string ToString()
         {
             return $"{Property}:{Value}";
