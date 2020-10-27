@@ -9,7 +9,7 @@ namespace Blazorify.Utilities.Styling
     /// <summary>
     /// Represents a list of css classes. It is written into string with the ToString call.
     /// </summary>
-    public class CssDefinition
+    public class CssClassList
     {
         private const string Separator = " ";
         private static readonly char[] _separatorArray = new[] { ' ' };
@@ -18,7 +18,7 @@ namespace Blazorify.Utilities.Styling
         private readonly CssBuilderOptions _options;
         private readonly ThreadsafeCssBuilderCache _cache;
 
-        internal CssDefinition(CssBuilderOptions options)
+        internal CssClassList(CssBuilderOptions options)
         {
             _cssClasses = new List<string>();
             _options = options ?? throw new ArgumentNullException(nameof(options));
@@ -47,7 +47,7 @@ namespace Blazorify.Utilities.Styling
         /// </summary>
         /// <param name="values">The list of class definitions.</param>
         /// <returns>Returns with this so the calls can be chained.</returns>
-        public CssDefinition AddMultiple(params object[] values)
+        public CssClassList AddMultiple(params object[] values)
         {
             if (values == null || values.Length == 0)
             {
@@ -76,7 +76,7 @@ namespace Blazorify.Utilities.Styling
                 {
                     Add(cssList);
                 }
-                else if (value is CssDefinition other)
+                else if (value is CssClassList other)
                 {
                     Add(other);
                 }
@@ -93,19 +93,47 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public CssDefinition Add(string cssClass, Func<bool> predicate)
-        {
-            AddInner(cssClass, predicate());
-            return this;
-        }
-
-        public CssDefinition Add(string cssClass, bool condition = true)
+        /// <summary>
+        /// Adds the css class to the list if the second parameter is true.
+        /// If the css class is null or empty it is skipped.
+        /// </summary>
+        /// <param name="cssClass">A css class.</param>
+        /// <param name="condition">If true the class is added to the list.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public CssClassList Add(string cssClass, bool condition = true)
         {
             AddInner(cssClass, condition);
             return this;
         }
 
-        public CssDefinition Add(params (string, bool)[] tuple)
+        /// <summary>
+        /// Adds the css class to the list if the second parameter evaulates to true.
+        /// If the css class is null or empty it is skipped.
+        /// </summary>
+        /// <param name="cssClass">A css class.</param>
+        /// <param name="predicate">a predicate, if it returns true then the css class is added to the list.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public CssClassList Add(string cssClass, Func<bool> predicate)
+        {
+            if (predicate is null)
+            {
+                throw new ArgumentNullException(nameof(predicate));
+            }
+
+            AddInner(cssClass, predicate());
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the tuples to the list as css classes. The first parameter of the
+        /// tuple is used as css class and it is added only if the second value is true.
+        /// </summary>
+        /// <param name="tuple">
+        /// A tuple where the first parameter is a css class and the second
+        /// value is a bool which determines if the class should be added.
+        /// </param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public CssClassList Add(params (string, bool)[] tuple)
         {
             if (tuple == null || tuple.Length == 0)
             {
@@ -120,7 +148,16 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public CssDefinition Add(params (string, Func<bool>)[] tuple)
+        /// <summary>
+        /// Adds the tuples to the list as css classes. The first parameter of the
+        /// tuple is used as css class and it is added only if the second function returns true.
+        /// </summary>
+        /// <param name="tuple">
+        /// A tuple where the first parameter is a css class and the second
+        /// value is a function which determines if the class should be added.
+        /// </param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public CssClassList Add(params (string, Func<bool>)[] tuple)
         {
             if (tuple == null || tuple.Length == 0)
             {
@@ -135,7 +172,13 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public CssDefinition Add(IEnumerable<string> cssList)
+        /// <summary>
+        /// Adds the strings as classes to the list. If a string contains more than
+        /// one css class, then it is broken to parts.
+        /// </summary>
+        /// <param name="cssList">A css list enumeration.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public CssClassList Add(IEnumerable<string> cssList)
         {
             if (cssList == null)
             {
@@ -150,14 +193,19 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public CssDefinition Add(CssDefinition cssBuilder)
+        /// <summary>
+        /// Adds the css classes from the other CssDefinition.
+        /// </summary>
+        /// <param name="cssDefinition">A CssDefinition instance.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public CssClassList Add(CssClassList cssDefinition)
         {
-            if (cssBuilder == null)
+            if (cssDefinition == null)
             {
                 return this;
             }
 
-            foreach (var value in cssBuilder._cssClasses)
+            foreach (var value in cssDefinition._cssClasses)
             {
                 AddInner(value);
             }
@@ -165,7 +213,14 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public CssDefinition Add(Enum enumValue)
+        /// <summary>
+        /// Adds the enum value as css class to the list. The Enum name is converted to css class
+        /// name with <see cref="CssBuilderOptions.EnumToClassNameConverter"/>. This conversion is cached
+        /// which is bound to the options.
+        /// </summary>
+        /// <param name="enumValue">An enum value.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public CssClassList Add(Enum enumValue)
         {
             if (enumValue == null)
             {
@@ -177,7 +232,15 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public CssDefinition Add(object values)
+        /// <summary>
+        /// Adds the properties as css classes to the list. For class name the property name used
+        /// after converted with <see cref="CssBuilderOptions.PropertyToClassNameConverter"/>. The properties
+        /// added only if it is a boolean with value true. On the object all property must be bool type.
+        /// For the processing a cached accessor is generated which is bound to the options.
+        /// </summary>
+        /// <param name="values">An object that has only bool property. Preferably an anonymous type.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public CssClassList Add(object values)
         {
             if (values == null)
             {
@@ -197,7 +260,7 @@ namespace Blazorify.Utilities.Styling
         /// </summary>
         /// <param name="attributes">The attributes dictionary.</param>
         /// <returns>Returns with this so the calls can be chained.</returns>
-        public CssDefinition Add(IReadOnlyDictionary<string, object> attributes)
+        public CssClassList Add(IReadOnlyDictionary<string, object> attributes)
         {
             if (attributes != null
                 && attributes.TryGetValue("class", out var css)

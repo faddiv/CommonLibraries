@@ -9,7 +9,7 @@ namespace Blazorify.Utilities.Styling
         /// </summary>
         /// <param name="options">Modifies how the css class names is generated. If it is not given the the default used from the CssBuilder.</param>
         /// <returns>An empty css definition.</returns>
-        CssDefinition Create(CssBuilderOptions options = null);
+        CssList Create(CssBuilderOptions options = null);
 
 
         /// <summary>
@@ -24,12 +24,12 @@ namespace Blazorify.Utilities.Styling
         /// ValueTuple where first parameter is string, the second is bool or Func&lt;bool&gt;,
         /// IEnumerable&lt;string&gt;, another CssDefinition or a IReadOnlyDictionary&lt;string, object&gt; with a class key.</param>
         /// <returns>
-        /// A <see cref="CssDefinition"/> that contains the processed css classes, and can be used in the class attribute directly.
+        /// A <see cref="CssList"/> that contains the processed css classes, and can be used in the class attribute directly.
         /// </returns>
         /// <example>
         ///     &lt;div class="@Css["class1", ("class2", true), new { class3 = true}]&gt;...&lt;/div&gt;
         /// </example>
-        CssDefinition this[params object[] arguments] { get; }
+        CssList this[params object[] arguments] { get; }
 
         /// <summary>
         /// Starts a new CssDefinition and adds all the as classes.
@@ -40,11 +40,11 @@ namespace Blazorify.Utilities.Styling
         /// <param name="cssClasses">Default classes to add. If it is null or empty then skipped.</param>
         /// <param name="tuple">List of tuple values that evaulated and added conditionally.</param>
         /// <returns>
-        /// A <see cref="CssDefinition"/> that contains the processed css classes, and can be used in the class attribute directly.
+        /// A <see cref="CssList"/> that contains the processed css classes, and can be used in the class attribute directly.
         /// </returns>
         /// <remarks>
         /// This variant created so Func&lt;bool&gt; also can be used on this call without writing out the Func.
         /// </remarks>
-        CssDefinition this[string cssClasses, params (string, Func<bool>)[] tuple] { get; }
+        CssList this[string cssClasses, params (string, Func<bool>)[] tuple] { get; }
     }
 }

@@ -13,7 +13,7 @@ namespace Blazorify.Utilities.Styling
             ExcludeDuplication = true
         });
 
-        private CssDefinition CreateCssDefinition(CssBuilderOptions options = null)
+        private CssClassList CreateCssDefinition(CssBuilderOptions options = null)
         {
             return cssBuilder.Create(options);
         }

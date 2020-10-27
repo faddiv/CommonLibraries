@@ -7,26 +7,26 @@ using System.Reflection;
 
 namespace Blazorify.Utilities.Styling
 {
-    public class StyleDefinition
+    public class StyleBlock
     {
-        private readonly List<StyleElement> _styles;
+        private readonly List<StyleDeclaration> _styles;
         private readonly ThreadsafeStyleBuilderCache _cache;
 
-        internal StyleDefinition(ThreadsafeStyleBuilderCache cache)
+        internal StyleBlock(ThreadsafeStyleBuilderCache cache)
         {
             _cache = cache;
-            _styles = new List<StyleElement>();
+            _styles = new List<StyleDeclaration>();
         }
 
-        public IReadOnlyList<StyleElement> Styles => _styles;
+        public IReadOnlyList<StyleDeclaration> Styles => _styles;
 
-        public StyleDefinition Add(string property, string value, bool condition = true)
+        public StyleBlock Add(string property, string value, bool condition = true)
         {
             AddInner(property, value, condition);
             return this;
         }
 
-        public StyleDefinition Add(string property, Func<string> value, bool condition = true)
+        public StyleBlock Add(string property, Func<string> value, bool condition = true)
         {
             if (value is null)
             {
@@ -37,7 +37,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleDefinition Add(string property, string value, Func<bool> predicate)
+        public StyleBlock Add(string property, string value, Func<bool> predicate)
         {
             if (predicate is null)
             {
@@ -48,7 +48,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleDefinition Add(string property, Func<string> value, Func<bool> predicate)
+        public StyleBlock Add(string property, Func<string> value, Func<bool> predicate)
         {
             if (value is null)
             {
@@ -64,7 +64,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleDefinition Add(StyleDefinition styleBuilder)
+        public StyleBlock Add(StyleBlock styleBuilder)
         {
             if (styleBuilder is null)
             {
@@ -79,7 +79,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleDefinition Add(IReadOnlyDictionary<string, object> attributes)
+        public StyleBlock Add(IReadOnlyDictionary<string, object> attributes)
         {
             if (attributes is null)
             {
@@ -111,7 +111,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleDefinition Add(object values)
+        public StyleBlock Add(object values)
         {
             if (values is null)
             {
@@ -125,7 +125,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleDefinition AddMultiple(params object[] values)
+        public StyleBlock AddMultiple(params object[] values)
         {
             if (values == null || values.Length == 0)
             {
@@ -163,7 +163,7 @@ namespace Blazorify.Utilities.Styling
                 {
                     AddInner(type6.Item1, type6.Item2(), type6.Item3());
                 }
-                else if (item is StyleDefinition styleBuilder)
+                else if (item is StyleBlock styleBuilder)
                 {
                     Add(styleBuilder);
                 }
@@ -185,11 +185,22 @@ namespace Blazorify.Utilities.Styling
             return _styles.Any(e => e.Property == propertyName);
         }
 
+        /// <summary>
+        /// Finds and returns with the value of the property. If not found then it returns null.
+        /// </summary>
+        /// <param name="propertyName">A property name to find.</param>
+        /// <returns></returns>
         public string GetPropertyValue(string propertyName)
         {
             return _styles.Find(e => e.Property == propertyName).Value;
         }
 
+        /// <summary>
+        /// Returns with the assembled style definition.
+        /// </summary>
+        /// <returns>
+        /// A string where the style definitions joined with semicolons.
+        /// </returns>
         public override string ToString()
         {
             return string.Join(";", _styles);
@@ -200,7 +211,7 @@ namespace Blazorify.Utilities.Styling
             ValidateProperty(property);
             if (condition && !string.IsNullOrEmpty(value))
             {
-                _styles.Add(new StyleElement(property, value));
+                _styles.Add(new StyleDeclaration(property, value));
             }
         }
 

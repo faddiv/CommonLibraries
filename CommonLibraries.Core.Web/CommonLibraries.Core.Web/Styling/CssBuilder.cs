@@ -19,7 +19,7 @@ namespace Blazorify.Utilities.Styling
         }
 
         /// <inheritdoc />
-        public CssDefinition this[params object[] arguments]
+        public CssList this[params object[] arguments]
         {
             get
             {
@@ -28,7 +28,7 @@ namespace Blazorify.Utilities.Styling
         }
 
         /// <inheritdoc />
-        public CssDefinition this[string cssClass, params (string, Func<bool>)[] tuple]
+        public CssList this[string cssClass, params (string, Func<bool>)[] tuple]
         {
             get
             {
@@ -37,9 +37,9 @@ namespace Blazorify.Utilities.Styling
         }
 
         /// <inheritdoc />
-        public CssDefinition Create(CssBuilderOptions options = null)
+        public CssList Create(CssBuilderOptions options = null)
         {
-            return new CssDefinition(options ?? _options);
+            return new CssList(options ?? _options);
         }
 
     }

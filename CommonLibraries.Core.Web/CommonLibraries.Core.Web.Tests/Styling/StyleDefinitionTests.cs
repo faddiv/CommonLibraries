@@ -16,7 +16,7 @@ namespace Blazorify.Utilities.Styling
         private const string Result = "width:100px;height:200px";
 
         private StyleBuilder styleBuilder = new StyleBuilder();
-        private StyleDefinition CreateStyleDefinition()
+        private StyleBlock CreateStyleDefinition()
         {
             return styleBuilder.Create();
         }

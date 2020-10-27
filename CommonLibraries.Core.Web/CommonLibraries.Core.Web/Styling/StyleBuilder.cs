@@ -11,12 +11,12 @@ namespace Blazorify.Utilities.Styling
             _cache = new ThreadsafeStyleBuilderCache();
         }
 
-        public StyleDefinition Create()
+        public StyleBlock Create()
         {
-            return new StyleDefinition(_cache);
+            return new StyleBlock(_cache);
         }
 
-        public StyleDefinition this[params object[] arguments]
+        public StyleBlock this[params object[] arguments]
         {
             get
             {
@@ -24,7 +24,7 @@ namespace Blazorify.Utilities.Styling
             }
         }
 
-        public StyleDefinition this[params (string, string, Func<bool>)[] arguments]
+        public StyleBlock this[params (string, string, Func<bool>)[] arguments]
         {
             get
             {
@@ -38,7 +38,7 @@ namespace Blazorify.Utilities.Styling
             }
         }
 
-        public StyleDefinition this[params (string, Func<string>, bool)[] arguments]
+        public StyleBlock this[params (string, Func<string>, bool)[] arguments]
         {
             get
             {
@@ -52,7 +52,7 @@ namespace Blazorify.Utilities.Styling
             }
         }
 
-        public StyleDefinition this[params (string, Func<string>, Func<bool>)[] arguments]
+        public StyleBlock this[params (string, Func<string>, Func<bool>)[] arguments]
         {
             get
             {

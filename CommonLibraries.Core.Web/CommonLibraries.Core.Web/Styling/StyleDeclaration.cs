@@ -5,26 +5,26 @@ namespace Blazorify.Utilities.Styling
     /// <summary>
     /// Represents a style property and value pair.
     /// </summary>
-    public struct StyleElement
+    public struct StyleDeclaration
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StyleElement"/> struct.
+        /// Initializes a new instance of the <see cref="StyleDeclaration"/> struct.
         /// </summary>
         /// <param name="property">The property component of the style element.</param>
         /// <param name="value">The value component of the style element.</param>
-        public StyleElement(string property, string value)
+        public StyleDeclaration(string property, string value)
         {
             Property = property;
             Value = value;
         }
 
         /// <summary>
-        /// The property component of the style element.
+        /// Gets the property component of the style element.
         /// </summary>
         public string Property { get; }
 
         /// <summary>
-        /// The value component of the style element.
+        /// Gets the value component of the style element.
         /// </summary>
         public string Value { get; }
 
@@ -34,7 +34,7 @@ namespace Blazorify.Utilities.Styling
         /// <param name="left">Left element.</param>
         /// <param name="right">Right element.</param>
         /// <returns>true if the Property and Value equals by case sensitive comparison.</returns>
-        public static bool operator ==(StyleElement left, StyleElement right)
+        public static bool operator ==(StyleDeclaration left, StyleDeclaration right)
         {
             return left.Equals(right);
         }
@@ -45,7 +45,7 @@ namespace Blazorify.Utilities.Styling
         /// <param name="left">Left element.</param>
         /// <param name="right">Right element.</param>
         /// <returns>true if the Property and Value is not equal by case sensitive comparison.</returns>
-        public static bool operator !=(StyleElement left, StyleElement right)
+        public static bool operator !=(StyleDeclaration left, StyleDeclaration right)
         {
             return !(left == right);
         }
@@ -53,7 +53,7 @@ namespace Blazorify.Utilities.Styling
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            return obj is StyleElement element &&
+            return obj is StyleDeclaration element &&
                    Property == element.Property &&
                    Value == element.Value;
         }

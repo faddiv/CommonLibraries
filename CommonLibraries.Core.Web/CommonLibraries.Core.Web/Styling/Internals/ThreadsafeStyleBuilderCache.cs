@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 
 namespace Blazorify.Utilities.Styling.Internals
 {
-    public class ThreadsafeStyleBuilderCache
+    internal class ThreadsafeStyleBuilderCache
     {
         private readonly ConcurrentDictionary<Type, ProcessStyleDelegate> _styleExtractors = new ConcurrentDictionary<Type, ProcessStyleDelegate>();
 
