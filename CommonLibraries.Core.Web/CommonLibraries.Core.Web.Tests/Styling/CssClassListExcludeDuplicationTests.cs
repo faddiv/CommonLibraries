@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Blazorify.Utilities.Styling
 {
-    public class CssDefinitionExcludeDuplicationTests
+    public class CssClassListExcludeDuplicationTests
     {
         private CssBuilder cssBuilder = new CssBuilder(new CssBuilderOptions
         {

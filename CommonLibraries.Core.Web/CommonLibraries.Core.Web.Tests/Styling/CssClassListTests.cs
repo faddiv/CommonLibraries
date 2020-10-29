@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Blazorify.Utilities.Styling
 {
-    public class CssDefinitionTests
+    public class CssClassListTests
     {
         private CssBuilder cssBuilder = new CssBuilder(new CssBuilderOptions());
 
