@@ -7,12 +7,15 @@ using System.Reflection;
 
 namespace Blazorify.Utilities.Styling
 {
-    public class StyleBlock
+    /// <summary>
+    /// Represents a group of style rules. The final result is obtainable with the ToString call.
+    /// </summary>
+    public class StyleDeclarationBlock
     {
         private readonly List<StyleDeclaration> _styles;
         private readonly ThreadsafeStyleBuilderCache _cache;
 
-        internal StyleBlock(ThreadsafeStyleBuilderCache cache)
+        internal StyleDeclarationBlock(ThreadsafeStyleBuilderCache cache)
         {
             _cache = cache;
             _styles = new List<StyleDeclaration>();
@@ -20,13 +23,13 @@ namespace Blazorify.Utilities.Styling
 
         public IReadOnlyList<StyleDeclaration> Styles => _styles;
 
-        public StyleBlock Add(string property, string value, bool condition = true)
+        public StyleDeclarationBlock Add(string property, string value, bool condition = true)
         {
             AddInner(property, value, condition);
             return this;
         }
 
-        public StyleBlock Add(string property, Func<string> value, bool condition = true)
+        public StyleDeclarationBlock Add(string property, Func<string> value, bool condition = true)
         {
             if (value is null)
             {
@@ -37,7 +40,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleBlock Add(string property, string value, Func<bool> predicate)
+        public StyleDeclarationBlock Add(string property, string value, Func<bool> predicate)
         {
             if (predicate is null)
             {
@@ -48,7 +51,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleBlock Add(string property, Func<string> value, Func<bool> predicate)
+        public StyleDeclarationBlock Add(string property, Func<string> value, Func<bool> predicate)
         {
             if (value is null)
             {
@@ -64,7 +67,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleBlock Add(StyleBlock styleBuilder)
+        public StyleDeclarationBlock Add(StyleDeclarationBlock styleBuilder)
         {
             if (styleBuilder is null)
             {
@@ -79,7 +82,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleBlock Add(IReadOnlyDictionary<string, object> attributes)
+        public StyleDeclarationBlock Add(IReadOnlyDictionary<string, object> attributes)
         {
             if (attributes is null)
             {
@@ -111,7 +114,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleBlock Add(object values)
+        public StyleDeclarationBlock Add(object values)
         {
             if (values is null)
             {
@@ -125,7 +128,7 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleBlock AddMultiple(params object[] values)
+        public StyleDeclarationBlock AddMultiple(params object[] values)
         {
             if (values == null || values.Length == 0)
             {
@@ -163,7 +166,7 @@ namespace Blazorify.Utilities.Styling
                 {
                     AddInner(type6.Item1, type6.Item2(), type6.Item3());
                 }
-                else if (item is StyleBlock styleBuilder)
+                else if (item is StyleDeclarationBlock styleBuilder)
                 {
                     Add(styleBuilder);
                 }
@@ -189,7 +192,7 @@ namespace Blazorify.Utilities.Styling
         /// Finds and returns with the value of the property. If not found then it returns null.
         /// </summary>
         /// <param name="propertyName">A property name to find.</param>
-        /// <returns></returns>
+        /// <returns>Returns the value of the style declaration or null.</returns>
         public string GetPropertyValue(string propertyName)
         {
             return _styles.Find(e => e.Property == propertyName).Value;

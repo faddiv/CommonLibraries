@@ -24,17 +24,17 @@
         <member name="M:Blazorify.Utilities.Styling.CssBuilder.Create(Blazorify.Utilities.Styling.CssBuilderOptions)">
             <inheritdoc />
         </member>
-        <member name="T:Blazorify.Utilities.Styling.CssList">
+        <member name="T:Blazorify.Utilities.Styling.CssClassList">
             <summary>
             Represents a list of css classes. It is written into string with the ToString call.
             </summary>
         </member>
-        <member name="P:Blazorify.Utilities.Styling.CssList.CssClasses">
+        <member name="P:Blazorify.Utilities.Styling.CssClassList.CssClasses">
             <summary>
             Gets the list of added class names.
             </summary>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.AddMultiple(System.Object[])">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.AddMultiple(System.Object[])">
             <summary>
             Adds multiple class definition which can be string, enum, (string, bool),
             (string, Func&gt;bool&lt;), IEnumerable&gt;string&lt;, another CssDefinition,
@@ -43,7 +43,7 @@
             <param name="values">The list of class definitions.</param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(System.String,System.Boolean)">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.String,System.Boolean)">
             <summary>
             Adds the css class to the list if the second parameter is true.
             If the css class is null or empty it is skipped.
@@ -52,7 +52,7 @@
             <param name="condition">If true the class is added to the list.</param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(System.String,System.Func{System.Boolean})">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.String,System.Func{System.Boolean})">
             <summary>
             Adds the css class to the list if the second parameter evaulates to true.
             If the css class is null or empty it is skipped.
@@ -61,7 +61,7 @@
             <param name="predicate">a predicate, if it returns true then the css class is added to the list.</param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(System.ValueTuple{System.String,System.Boolean}[])">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.ValueTuple{System.String,System.Boolean}[])">
             <summary>
             Adds the tuples to the list as css classes. The first parameter of the
             tuple is used as css class and it is added only if the second value is true.
@@ -72,7 +72,7 @@
             </param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(System.ValueTuple{System.String,System.Func{System.Boolean}}[])">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.ValueTuple{System.String,System.Func{System.Boolean}}[])">
             <summary>
             Adds the tuples to the list as css classes. The first parameter of the
             tuple is used as css class and it is added only if the second function returns true.
@@ -83,7 +83,7 @@
             </param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(System.Collections.Generic.IEnumerable{System.String})">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
             Adds the strings as classes to the list. If a string contains more than
             one css class, then it is broken to parts.
@@ -91,14 +91,14 @@
             <param name="cssList">A css list enumeration.</param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(Blazorify.Utilities.Styling.CssList)">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(Blazorify.Utilities.Styling.CssClassList)">
             <summary>
             Adds the css classes from the other CssDefinition.
             </summary>
             <param name="cssDefinition">A CssDefinition instance.</param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(System.Enum)">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.Enum)">
             <summary>
             Adds the enum value as css class to the list. The Enum name is converted to css class
             name with <see cref="P:Blazorify.Utilities.Styling.CssBuilderOptions.EnumToClassNameConverter"/>. This conversion is cached
@@ -107,7 +107,7 @@
             <param name="enumValue">An enum value.</param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(System.Object)">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.Object)">
             <summary>
             Adds the properties as css classes to the list. For class name the property name used
             after converted with <see cref="P:Blazorify.Utilities.Styling.CssBuilderOptions.PropertyToClassNameConverter"/>. The properties
@@ -117,7 +117,7 @@
             <param name="values">An object that has only bool property. Preferably an anonymous type.</param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.Add(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.Add(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
             <summary>
             Checks if the dictionary has the class element. If yes then adds it's value as classes from it.
             The dictionary can be null.
@@ -125,14 +125,14 @@
             <param name="attributes">The attributes dictionary.</param>
             <returns>Returns with this so the calls can be chained.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.HasClass(System.String)">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.HasClass(System.String)">
             <summary>
             Indicates if the className is added to this.
             </summary>
             <param name="className">The class name to check.</param>
             <returns>True if already added; otherwise false.</returns>
         </member>
-        <member name="M:Blazorify.Utilities.Styling.CssList.ToString">
+        <member name="M:Blazorify.Utilities.Styling.CssClassList.ToString">
             <summary>
             Returns with the finished css class definition list.
             </summary>
@@ -158,7 +158,7 @@
             ValueTuple where first parameter is string, the second is bool or Func&lt;bool&gt;,
             IEnumerable&lt;string&gt;, another CssDefinition or a IReadOnlyDictionary&lt;string, object&gt; with a class key.</param>
             <returns>
-            A <see cref="T:Blazorify.Utilities.Styling.CssList"/> that contains the processed css classes, and can be used in the class attribute directly.
+            A <see cref="T:Blazorify.Utilities.Styling.CssClassList"/> that contains the processed css classes, and can be used in the class attribute directly.
             </returns>
             <example>
                 &lt;div class="@Css["class1", ("class2", true), new { class3 = true}]&gt;...&lt;/div&gt;
@@ -174,7 +174,7 @@
             <param name="cssClasses">Default classes to add. If it is null or empty then skipped.</param>
             <param name="tuple">List of tuple values that evaulated and added conditionally.</param>
             <returns>
-            A <see cref="T:Blazorify.Utilities.Styling.CssList"/> that contains the processed css classes, and can be used in the class attribute directly.
+            A <see cref="T:Blazorify.Utilities.Styling.CssClassList"/> that contains the processed css classes, and can be used in the class attribute directly.
             </returns>
             <remarks>
             This variant created so Func&lt;bool&gt; also can be used on this call without writing out the Func.

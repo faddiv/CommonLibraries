@@ -2,21 +2,23 @@ using System;
 
 namespace Blazorify.Utilities.Styling
 {
+    /// <summary>
+    /// Implementation of the <see cref="IStyleBuilder"/>. Use this class throught the interface.
+    /// </summary>
     public class StyleBuilder : IStyleBuilder
     {
         private readonly ThreadsafeStyleBuilderCache _cache;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StyleBuilder"/> class.
+        /// </summary>
         public StyleBuilder()
         {
             _cache = new ThreadsafeStyleBuilderCache();
         }
 
-        public StyleBlock Create()
-        {
-            return new StyleBlock(_cache);
-        }
-
-        public StyleBlock this[params object[] arguments]
+        /// <inheritdoc />
+        public StyleDeclarationBlock this[params object[] arguments]
         {
             get
             {
@@ -24,7 +26,8 @@ namespace Blazorify.Utilities.Styling
             }
         }
 
-        public StyleBlock this[params (string, string, Func<bool>)[] arguments]
+        /// <inheritdoc />
+        public StyleDeclarationBlock this[params (string, string, Func<bool>)[] arguments]
         {
             get
             {
@@ -38,7 +41,8 @@ namespace Blazorify.Utilities.Styling
             }
         }
 
-        public StyleBlock this[params (string, Func<string>, bool)[] arguments]
+        /// <inheritdoc />
+        public StyleDeclarationBlock this[params (string, Func<string>, bool)[] arguments]
         {
             get
             {
@@ -52,7 +56,8 @@ namespace Blazorify.Utilities.Styling
             }
         }
 
-        public StyleBlock this[params (string, Func<string>, Func<bool>)[] arguments]
+        /// <inheritdoc />
+        public StyleDeclarationBlock this[params (string, Func<string>, Func<bool>)[] arguments]
         {
             get
             {
@@ -64,6 +69,12 @@ namespace Blazorify.Utilities.Styling
 
                 return style;
             }
+        }
+
+        /// <inheritdoc />
+        public StyleDeclarationBlock Create()
+        {
+            return new StyleDeclarationBlock(_cache);
         }
 
         public void ClearCache()

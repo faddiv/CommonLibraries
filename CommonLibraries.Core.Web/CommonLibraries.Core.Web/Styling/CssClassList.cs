@@ -7,7 +7,7 @@ using System.Reflection;
 namespace Blazorify.Utilities.Styling
 {
     /// <summary>
-    /// Represents a list of css classes. It is written into string with the ToString call.
+    /// Represents a list of css classes. The final result is obtainable with the ToString call.
     /// </summary>
     public class CssClassList
     {

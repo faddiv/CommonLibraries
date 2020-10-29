@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace Blazorify.Utilities.Styling.Internals
 {
-    /* I compared the Dictionary with the ConcurrentDictionary. 
+    /* I compared the Dictionary with the ConcurrentDictionary.
      * It turns out on read, only 20% performace lost, so I dropped the thread unsafe variant.
-     * I also experimented with Enum caching. With default Equality comparer it became twice as 
+     * I also experimented with Enum caching. With default Equality comparer it became twice as
      * fast as the non cached version. With the custom Enum comparer it became four times faster.
      */
     internal class ThreadsafeCssBuilderCache
@@ -43,8 +43,8 @@ namespace Blazorify.Utilities.Styling.Internals
             public int GetHashCode(Enum value)
             {
                 int hashCode = -1959444751;
-                hashCode = hashCode * -1521134295 + value.GetType().GetHashCode();
-                hashCode = hashCode * -1521134295 + value.GetHashCode();
+                hashCode = (hashCode * -1521134295) + value.GetType().GetHashCode();
+                hashCode = (hashCode * -1521134295) + value.GetHashCode();
                 return hashCode;
             }
         }

@@ -3,7 +3,7 @@ using System;
 namespace Blazorify.Utilities.Styling
 {
     /// <summary>
-    /// Implementation of the ICssBuilder. Use this class thorught the interface.
+    /// Implementation of the <see cref="ICssBuilder"/>. Use this class throught the interface.
     /// </summary>
     public class CssBuilder : ICssBuilder
     {
@@ -41,6 +41,5 @@ namespace Blazorify.Utilities.Styling
         {
             return new CssClassList(options ?? _options);
         }
-
     }
 }
