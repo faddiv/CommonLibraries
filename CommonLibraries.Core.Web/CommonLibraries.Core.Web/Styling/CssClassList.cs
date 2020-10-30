@@ -236,7 +236,7 @@ namespace Blazorify.Utilities.Styling
         /// Adds the properties as css classes to the list. For class name the property name used
         /// after converted with <see cref="CssBuilderOptions.PropertyToClassNameConverter"/>. The properties
         /// added only if it is a boolean with value true. On the object all property must be bool type.
-        /// For the processing a cached accessor is generated which is bound to the options.
+        /// The conversion method is cached which is bound to the options.
         /// </summary>
         /// <param name="values">An object that has only bool property. Preferably an anonymous type.</param>
         /// <returns>Returns with this so the calls can be chained.</returns>

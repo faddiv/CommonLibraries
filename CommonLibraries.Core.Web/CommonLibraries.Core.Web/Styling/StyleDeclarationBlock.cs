@@ -21,14 +21,50 @@ namespace Blazorify.Utilities.Styling
             _styles = new List<StyleDeclaration>();
         }
 
+        /// <summary>
+        /// Gets the list of added style rules.
+        /// </summary>
         public IReadOnlyList<StyleDeclaration> Styles => _styles;
 
+        /// <summary>
+        /// Adds a stlye rule to the end of the declaration block if the
+        /// condition is true and the value is not null or empty.
+        /// </summary>
+        /// <param name="property">
+        /// The property part of the style rule.
+        /// </param>
+        /// <param name="value">
+        /// The value part of the style rule. Can be null or empty in which case
+        /// the rule won't be added.
+        /// </param>
+        /// <param name="condition">
+        /// A condition which determines if the style rule should be added.
+        /// </param>
+        /// <exception cref="ArgumentException">Property is null or empty.</exception>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public StyleDeclarationBlock Add(string property, string value, bool condition = true)
         {
             AddInner(property, value, condition);
             return this;
         }
 
+        /// <summary>
+        /// Adds a stlye rule to the end of the declaration block if the
+        /// condition is true and the value function evaulates to not null or empty.
+        /// </summary>
+        /// <param name="property">
+        /// The property part of the style rule.
+        /// </param>
+        /// <param name="value">
+        /// A Function that calculate the value part of the style rule.
+        /// If it returns null or empty then the style rule won't be added.
+        /// </param>
+        /// <param name="condition">
+        /// A condition which determines if the style rule should be added.
+        /// </param>
+        /// <exception cref="ArgumentException">Property is null or empty.</exception>
+        /// <exception cref="ArgumentNullException">The value is null.</exception>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public StyleDeclarationBlock Add(string property, Func<string> value, bool condition = true)
         {
             if (value is null)
@@ -40,6 +76,23 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        /// <summary>
+        /// Adds a stlye rule to the end of the declaration block if the
+        /// predicate evaulates to true and the value is not null or empty.
+        /// </summary>
+        /// <param name="property">
+        /// The property part of the style rule.
+        /// </param>
+        /// <param name="value">
+        /// The value part of the style rule. Can be null or empty in which case
+        /// the rule won't be added.
+        /// </param>
+        /// <param name="predicate">
+        /// A predicate which if evaulates to true then the style rule added othervise it skipped.
+        /// </param>
+        /// <exception cref="ArgumentException">Property is null or empty.</exception>
+        /// <exception cref="ArgumentNullException">The value or the predicate is null.</exception>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public StyleDeclarationBlock Add(string property, string value, Func<bool> predicate)
         {
             if (predicate is null)
@@ -51,6 +104,23 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        /// <summary>
+        /// Adds a stlye rule to the end of the declaration block if the
+        /// predicate evaulates to true and the value function evaulates to not null or empty.
+        /// </summary>
+        /// <param name="property">
+        /// The property part of the style rule.
+        /// </param>
+        /// <param name="value">
+        /// A Function that calculate the value part of the style rule.
+        /// If it returns null or empty then the style rule won't be added.
+        /// </param>
+        /// <param name="predicate">
+        /// A predicate which if evaulates to true then the style rule added othervise it skipped.
+        /// </param>
+        /// <exception cref="ArgumentException">Property is null or empty.</exception>
+        /// <exception cref="ArgumentNullException">The value or the predicate is null.</exception>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public StyleDeclarationBlock Add(string property, Func<string> value, Func<bool> predicate)
         {
             if (value is null)
@@ -67,14 +137,20 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
-        public StyleDeclarationBlock Add(StyleDeclarationBlock styleBuilder)
+        /// <summary>
+        /// Adds the styles from the given block to the end of this block.
+        /// It can be null.
+        /// </summary>
+        /// <param name="declarationBlock">A style declaration block or null.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
+        public StyleDeclarationBlock Add(StyleDeclarationBlock declarationBlock)
         {
-            if (styleBuilder is null)
+            if (declarationBlock is null)
             {
                 return this;
             }
 
-            foreach (var item in styleBuilder._styles)
+            foreach (var item in declarationBlock._styles)
             {
                 AddInner(item.Property, item.Value);
             }
@@ -82,6 +158,15 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        /// <summary>
+        /// Adds the contents of the style key to the end of this block.
+        /// The value in the dictionary should be string or convertible to string.
+        /// This method doesn't add anything if the attributes is null or there is
+        /// no style key in it. The value is broken into style rules so it needs
+        /// to be valid. ( Meaning ; separated list with property:value pairs.)
+        /// </summary>
+        /// <param name="attributes">A dictionary which may contain style or null.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public StyleDeclarationBlock Add(IReadOnlyDictionary<string, object> attributes)
         {
             if (attributes is null)
@@ -104,7 +189,7 @@ namespace Blazorify.Utilities.Styling
                     var stylePair = stylePairStr.Split(new[] { ':' });
                     if (stylePair.Length != 2)
                     {
-                        throw new Exception($"Invalid style found in the attributes.style: '{styleStr}'");
+                        throw new ArgumentException($"Invalid style found in the attributes.style: '{styleStr}'");
                     }
 
                     AddInner(stylePair[0].Trim(), stylePair[1].Trim());
@@ -114,6 +199,19 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        /// <summary>
+        /// Adds the properties to the end of this block. The property names used
+        /// as style property. They converted to kebab-case format and underscores
+        /// are replaced with hyphen. The property values can be any type that
+        /// can be converted to string or null. The conversion method is cached
+        /// which is bound to the style builder.
+        /// </summary>
+        /// <remarks>
+        /// Examples:
+        /// <code>Stlye.Add(new { BorderWidth = "1px", _webkitTransition = "ease" }) -> border-width:1px;-webkit-transition:ease</code>
+        /// </remarks>
+        /// <param name="values">An anonymous object where the properties used as stlye rules.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public StyleDeclarationBlock Add(object values)
         {
             if (values is null)
@@ -128,6 +226,12 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        /// <summary>
+        /// Adds multiple object to the end of the declaration block. The objects
+        /// can be any types that the Add methods can process.
+        /// </summary>
+        /// <param name="values">an array of style declaration.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public StyleDeclarationBlock AddMultiple(params object[] values)
         {
             if (values == null || values.Length == 0)
@@ -183,6 +287,11 @@ namespace Blazorify.Utilities.Styling
             return this;
         }
 
+        /// <summary>
+        /// Determines whether a property is in the style declaration block.
+        /// </summary>
+        /// <param name="propertyName">The property to locate in the rules. It can be null.</param>
+        /// <returns>Returns with this so the calls can be chained.</returns>
         public bool HasStyle(string propertyName)
         {
             return _styles.Any(e => e.Property == propertyName);
@@ -238,8 +347,8 @@ namespace Blazorify.Utilities.Styling
                 var stringValue = Expression.Call(valueGetter, toStringMethod);
                 var className = CssBuilderNamingConventions.KebabCaseWithUnderscoreToHyphen(property);
                 var styleNameConstant = Expression.Constant(className);
-                var invokation = Expression.Invoke(addMethod, styleNameConstant, stringValue, trueConstant);
-                var conditionalAdd = Expression.IfThen(notNull, invokation);
+                var invocation = Expression.Invoke(addMethod, styleNameConstant, stringValue, trueConstant);
+                var conditionalAdd = Expression.IfThen(notNull, invocation);
                 lines.Add(conditionalAdd);
             }
 

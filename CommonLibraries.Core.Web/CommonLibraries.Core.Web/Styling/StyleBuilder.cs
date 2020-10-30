@@ -77,6 +77,9 @@ namespace Blazorify.Utilities.Styling
             return new StyleDeclarationBlock(_cache);
         }
 
+        /// <summary>
+        /// Clears thy style cache.
+        /// </summary>
         public void ClearCache()
         {
             _cache.ClearCache();
